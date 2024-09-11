@@ -1,0 +1,167 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.RotaPage.DetailsModel
+@using System.Globalization
+
+<div>
+    <h4>Rota Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserRota.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserRota.Name)
+        </dd>
+        <dt class="col-sm-2">
+            Post Code
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserRota.PostCode)
+        </dd>
+         
+    </dl>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <form method="get">
+            <input type="hidden" name="id" value="@Model.UserRota.Id" />
+            <input type="hidden" id="currentYear" name="year" value="@Model.CurrentYear" />
+            <input type="hidden" id="currentWeek" name="week" value="@Model.CurrentWeek" />
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="year">Year:</label>
+                    <select id="yearSelect" class="form-control" name="year" onchange="updateCurrentYear()">
+                        @for (int i = DateTime.Now.Year; i >= DateTime.Now.Year - 1; i--)
+                        {
+                            
+                            <option value="@i" selected="@(i == Model.CurrentYear)">@i</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="month">Month:</label>
+                    <select id="monthSelect" class="form-control" name="month" onchange="clearWeekAndDay()">
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            <option value="@i" selected="@(i == Model.CurrentMonth)">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+
+
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="week">Week:</label>
+                    <select id="weekSelect" class="form-control" name="week" onchange="clearMonthAndDay()">
+                        @for (int i = 1; i <= 53; i++)
+                        {
+                            <option value="@i" selected="@(i == Model.CurrentWeek)">Week @i</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="day">Day:</label>
+                    <select id="daySelect" class="form-control" name="day" onchange="clearMonthAndWeek()">
+                        @for (int i = 1; i <= 31; i++)
+                        {
+                            <option value="@i" selected="@(i == Model.CurrentDay)">Day @i</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary" onclick="adjustWeek(-1)">Previous Week</button>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-primary" onclick="adjustWeek(1)">Next Week</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-body">
+        <h3 style="text-align:center;font-weight:900;">@Model.DateTitle</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Staff</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            @{ int sn = 0; }
+            <tbody>
+                @foreach (var item in Model.UserTimeSheets)
+                {
+                    <tr>
+                        <td>@(++sn)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Title)
+                            @Html.DisplayFor(modelItem => item.User.Surname)
+                            @Html.DisplayFor(modelItem => item.User.FirstName)
+                            @Html.DisplayFor(modelItem => item.User.MiddleName)
+                        </td>
+                        <td>@item.TimeSheet.Date.ToString("ddd dd MMM, yyyy")</td>
+                        <td>@item.StartTime.ToString(@"hh\:mm") - @item.EndTime.ToString(@"hh\:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+   
+    
+        <div class="">
+            <a class="btn btn-primary" asp-page="./Index">Back to List</a>
+            <a class="btn btn-primary" asp-page="./PrintRota" asp-route-id="@Model.UserRota.Id" asp-route-day="@Model.RouteDay" asp-route-week="@Model.RouteWeek" asp-route-month="@Model.RouteMonth" asp-route-year="@Model.RouteYear">Print Rota</a>
+        </div>
+    </div>
+</div>
+ 
+
+@section Scripts {
+    <script>
+        function adjustWeek(offset) {
+            var currentYear = parseInt(document.getElementById("currentYear").value);
+            var currentWeek = parseInt(document.getElementById("currentWeek").value);
+            var newWeek = currentWeek + offset;
+
+            if (newWeek < 1) {
+                currentYear -= 1;
+                newWeek = 53;
+            } else if (newWeek > 53) {
+                currentYear += 1;
+                newWeek = 1;
+            }
+
+            document.getElementById("currentYear").value = currentYear;
+            document.getElementById("currentWeek").value = newWeek;
+            document.getElementById("yearSelect").value = currentYear;
+            document.getElementById("weekSelect").value = newWeek;
+
+            clearMonthAndDay();
+            document.forms[0].submit();
+        }
+
+        function updateCurrentYear() {
+            var year = document.getElementById("yearSelect").value;
+            document.getElementById("currentYear").value = year;
+        }
+
+        function clearWeekAndDay() {
+            document.getElementById("currentWeek").value = '';
+            document.getElementById("daySelect").value = '';
+        }
+
+        function clearMonthAndDay() {
+            document.getElementById("monthSelect").value = '';
+            document.getElementById("daySelect").value = '';
+        }
+
+        function clearMonthAndWeek() {
+            document.getElementById("monthSelect").value = '';
+            document.getElementById("weekSelect").value = '';
+        }
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.QualificationPageList.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification[0].QualificationsItem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification[0].SchoolCollege)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification[0].GradeResult)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification[0].DatesFromTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Qualification[0].Application)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Qualification) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.QualificationsItem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolCollege)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeResult)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatesFromTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Application.Id)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

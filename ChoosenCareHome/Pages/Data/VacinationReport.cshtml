@@ -1,0 +1,100 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.VacinationReportModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Vacinationt Report</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Vacinationt Report </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="r-container">
+         <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                           
+
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    <strong>@TempData["success"]</strong>
+                                </div>
+
+                            }
+                            <form method="post">
+                                <input type="hidden" asp-for="ApplicationId" />
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Have you ever been Vaccinated, Immunized or Tested for / against any of the following?
+                                            </th>
+                                            <th>
+                                                Yes/No
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Vacinations[0].Details)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int i = 0; i < Model.Vacinations.Count; i++)
+                                        {
+                                            <input asp-for="@Model.Vacinations[i].Id" name="Vacinations[@i].Id" hidden="hidden" />
+                                            <tr>
+                                                <td>
+                                                    <span class="">
+                                                        @Html.DisplayFor(model => model.Vacinations[i].Title)
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <input asp-for="@Model.Vacinations[i].Status" name="Vacinations[@i].Status" class="form-control" placeholder="YES/NO" />
+
+                                                </td>
+                                                <td>
+                                                    <input asp-for="@Model.Vacinations[i].Details" name="Vacinations[@i].Details" class="form-control" />
+                                                </td>
+                                            </tr>
+
+                                        }
+
+
+
+
+                                    </tbody>
+
+                                </table>
+                                <input type="submit" class="btn btn-primary" value="Update" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <a asp-page="./DoctorInformation" asp-route-id="@Model.ApplicationId" style="float:right;" class="btn btn-primary">Next Doctor Information</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

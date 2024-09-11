@@ -1,0 +1,149 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.EmploymentModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">EMPLOYMENT/WORK EXPERIENCE</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">EMPLOYMENT/WORK EXPERIENCE</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="r-container">
+        <h4 style="font-size:15px;text-align:center;">Please record all employment in the past 5 years, including current employment by other agencies, and any other relevant experience gained within the healthcare field. Please start with the most recent. <strong>
+    Please note that we shall obtain a reference from your LAST EMPLOYER
+</strong></h4>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 style="text-align: center;">EMPLOYMENT HISTORY / WORK EXPERIENCE</h4>
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    <strong>@TempData["success"]</strong>
+                                </div>
+
+                            }
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmploymentHistoryList[0].NameOfEmployer)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmploymentHistoryList[0].From)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmploymentHistoryList[0].To)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmploymentHistoryList[0].PositionDuties)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.EmploymentHistoryList[0].Reason)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.EmploymentHistoryList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NameOfEmployer)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.From)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.To)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PositionDuties)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Reason)
+                                            </td>
+
+                                            <td>
+                                                <form method="post" asp-page-handler="Delete">
+                                                    <input type="hidden" value="@item.Id" name="id" />
+                                                    <input type="submit" value="X" class="btn btn-danger" />
+
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12" style="margin-top:20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Add New Employment Historys/Work Experience</h4>
+                            <form method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="EmploymentHistory.Id" />
+                                <input type="hidden" asp-for="EmploymentHistory.ApplicationId" value="@Model.ApplicationId" />
+                                <div class="form-group">
+                                    <label asp-for="EmploymentHistory.NameOfEmployer" class="control-label"></label>
+                                    <input asp-for="EmploymentHistory.NameOfEmployer" class="form-control" />
+                                    <span asp-validation-for="EmploymentHistory.NameOfEmployer" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EmploymentHistory.From" class="control-label"></label>
+                                    <input asp-for="EmploymentHistory.From" class="form-control" />
+                                    <span asp-validation-for="EmploymentHistory.From" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EmploymentHistory.To" class="control-label"></label>
+                                    <input asp-for="EmploymentHistory.To" class="form-control" />
+                                    <span asp-validation-for="EmploymentHistory.To" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EmploymentHistory.PositionDuties" class="control-label"></label>
+                                    <input asp-for="EmploymentHistory.PositionDuties" class="form-control" />
+                                    <span asp-validation-for="EmploymentHistory.PositionDuties" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EmploymentHistory.Reason" class="control-label"></label>
+                                    <input asp-for="EmploymentHistory.Reason" class="form-control" />
+                                    <span asp-validation-for="EmploymentHistory.Reason" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Add" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a asp-page="./References" asp-route-id="@Model.ApplicationId" style="float:right;" class="btn btn-primary">Next References</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

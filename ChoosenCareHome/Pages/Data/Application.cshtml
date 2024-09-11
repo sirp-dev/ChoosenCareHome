@@ -1,0 +1,136 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.ApplicationModel
+@{
+}
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Application Form</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Application Form</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+        <h4 style="font-size: 15px; text-align: center;">Private & Confidential</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Application.Title" class="control-label"></label>
+                        <input asp-for="Application.Title" class="form-control" required="required"/>
+                        <span asp-validation-for="Application.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.FirstName" class="control-label"></label>
+                        <input asp-for="Application.FirstName" class="form-control" required="required" />
+                        <span asp-validation-for="Application.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.MiddleName" class="control-label"></label>
+                        <input asp-for="Application.MiddleName" class="form-control" required="required" />
+                        <span asp-validation-for="Application.MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.Surname" class="control-label"></label>
+                        <input asp-for="Application.Surname" class="form-control" required="required" />
+                        <span asp-validation-for="Application.Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DateOfBirth" class="control-label"></label>
+                        <input asp-for="Application.DateOfBirth" class="form-control" />
+                        <span asp-validation-for="Application.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.NationalInsNo" class="control-label"></label>
+                        <input asp-for="Application.NationalInsNo" class="form-control" />
+                        <span asp-validation-for="Application.NationalInsNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.Address" class="control-label"></label>
+                        <input asp-for="Application.Address" class="form-control" />
+                        <span asp-validation-for="Application.Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.Postcode" class="control-label"></label>
+                        <input asp-for="Application.Postcode" class="form-control" required="required" />
+                        <span asp-validation-for="Application.Postcode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.HomeTel" class="control-label"></label>
+                        <input asp-for="Application.HomeTel" class="form-control" />
+                        <span asp-validation-for="Application.HomeTel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.Mobile" class="control-label"></label>
+                        <input asp-for="Application.Mobile" class="form-control" />
+                        <span asp-validation-for="Application.Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.EMail" class="control-label"></label>
+                        <input asp-for="Application.EMail" class="form-control" required="required" />
+                        <span asp-validation-for="Application.EMail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.MaritalStatus" class="control-label"></label>
+                        <input asp-for="Application.MaritalStatus" class="form-control" />
+                        <span asp-validation-for="Application.MaritalStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.NextOfKin" class="control-label"></label>
+                        <input asp-for="Application.NextOfKin" class="form-control" />
+                        <span asp-validation-for="Application.NextOfKin" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.Relationship" class="control-label"></label>
+                        <input asp-for="Application.Relationship" class="form-control" />
+                        <span asp-validation-for="Application.Relationship" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Application.PhoneNumber" class="form-control" required="required" />
+                        <span asp-validation-for="Application.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoYouHavePermissionToWorkInTheUk" class="control-label"></label>
+                        <input asp-for="Application.DoYouHavePermissionToWorkInTheUk" class="form-control" />
+                        <span asp-validation-for="Application.DoYouHavePermissionToWorkInTheUk" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoYouHaveAValidPassport" class="control-label"></label>
+                        <input asp-for="Application.DoYouHaveAValidPassport" class="form-control" />
+                        <span asp-validation-for="Application.DoYouHaveAValidPassport" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.YouHaveAValidWorkPermit" class="control-label"></label>
+                        <input asp-for="Application.YouHaveAValidWorkPermit" class="form-control" />
+                        <span asp-validation-for="Application.YouHaveAValidWorkPermit" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoYouHaveAccessToACarWhichCanBeUsedForWorkPurposes" class="control-label"></label>
+                        <input asp-for="Application.DoYouHaveAccessToACarWhichCanBeUsedForWorkPurposes" class="form-control" />
+                        <span asp-validation-for="Application.DoYouHaveAccessToACarWhichCanBeUsedForWorkPurposes" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoYouHoldAFullUkDrivingLicence" class="control-label"></label>
+                        <input asp-for="Application.DoYouHoldAFullUkDrivingLicence" class="form-control" />
+                        <span asp-validation-for="Application.DoYouHoldAFullUkDrivingLicence" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save and Continue" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.RotaPage.CreateModel
+
+ 
+
+<h4>New Rota</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        @if (TempData["error"] != null)
+        {
+            <div class="alert alert-danger">
+                <strong>@TempData["error"]</strong>
+            </div>
+
+        }
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserRota.Name" class="control-label"></label>
+                <input asp-for="UserRota.Name" class="form-control" />
+                <span asp-validation-for="UserRota.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserRota.PostCode" class="control-label"></label>
+                <input asp-for="UserRota.PostCode" class="form-control" />
+                <span asp-validation-for="UserRota.PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-page="Index">Back to List</a>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

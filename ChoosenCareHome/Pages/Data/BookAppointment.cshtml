@@ -1,0 +1,101 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.BookAppointmentModel
+@{
+}
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Book Appointment</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Book Appointment</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+        <h4>Book An Appointment With Us</h4>
+        <div class="row">
+            <div class="col-md-12">
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Title" class="control-label"></label>
+                        <input asp-for="Appointment.Title" class="form-control" />
+                        <span asp-validation-for="Appointment.Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.FirstName" class="control-label"></label>
+                        <input asp-for="Appointment.FirstName" class="form-control" />
+                        <span asp-validation-for="Appointment.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.MiddleName" class="control-label"></label>
+                        <input asp-for="Appointment.MiddleName" class="form-control" />
+                        <span asp-validation-for="Appointment.MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Surname" class="control-label"></label>
+                        <input asp-for="Appointment.Surname" class="form-control" />
+                        <span asp-validation-for="Appointment.Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.DateOfBirth" class="control-label"></label>
+                        <input asp-for="Appointment.DateOfBirth" class="form-control" />
+                        <span asp-validation-for="Appointment.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Address" class="control-label"></label>
+                        <input asp-for="Appointment.Address" class="form-control" />
+                        <span asp-validation-for="Appointment.Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Postcode" class="control-label"></label>
+                        <input asp-for="Appointment.Postcode" class="form-control" />
+                        <span asp-validation-for="Appointment.Postcode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.HomeTel" class="control-label"></label>
+                        <input asp-for="Appointment.HomeTel" class="form-control" />
+                        <span asp-validation-for="Appointment.HomeTel" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Mobile" class="control-label"></label>
+                        <input asp-for="Appointment.Mobile" class="form-control" />
+                        <span asp-validation-for="Appointment.Mobile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.EMail" class="control-label"></label>
+                        <input asp-for="Appointment.EMail" class="form-control" />
+                        <span asp-validation-for="Appointment.EMail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.MaritalStatus" class="control-label"></label>
+                        <input asp-for="Appointment.MaritalStatus" class="form-control" />
+                        <span asp-validation-for="Appointment.MaritalStatus" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Subject" class="control-label"></label>
+                        <textarea asp-for="Appointment.Subject" class="form-control"></textarea>
+                        <span asp-validation-for="Appointment.Subject" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Appointment.Message" class="control-label"></label>
+                        <textarea asp-for="Appointment.Message" class="form-control"></textarea>
+                        <span asp-validation-for="Appointment.Message" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Book an Appointment" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

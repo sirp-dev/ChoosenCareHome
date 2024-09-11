@@ -1,0 +1,71 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.ApplyModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Application Form</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Application Form</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container"> 
+        <h3 class="text-center">
+            CHOSEN HEALTHCARE
+        </h3>
+        <h4 class="text-center">
+             
+            APPLICATION FORM
+        </h4>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                     
+                    <div class="form-group">
+                        <label asp-for="Application.FirstName" class="control-label"></label>
+                        <input asp-for="Application.FirstName" class="form-control" required="required" />
+                        <span asp-validation-for="Application.FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.MiddleName" class="control-label"></label>
+                        <input asp-for="Application.MiddleName" class="form-control" required="required" />
+                        <span asp-validation-for="Application.MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.Surname" class="control-label"></label>
+                        <input asp-for="Application.Surname" class="form-control" required="required" />
+                        <span asp-validation-for="Application.Surname" class="text-danger"></span>
+                    </div>
+                  
+                    <div class="form-group">
+                        <label asp-for="Application.EMail" class="control-label">Email</label>
+                        <input asp-for="Application.EMail" class="form-control" type="email" required="required" />
+                        <span asp-validation-for="Application.EMail" class="text-danger"></span>
+                    </div>
+         
+                    <div class="form-group">
+                        <label asp-for="Application.PhoneNumber" class="control-label"></label>
+                        <input asp-for="Application.PhoneNumber" class="form-control" required="required" />
+                        <span asp-validation-for="Application.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

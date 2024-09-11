@@ -1,0 +1,166 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.DocumantUploadModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Documents</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Documents</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<style>
+    .card {
+        margin-top: 20px;
+    }
+    li {
+        
+        padding: 5px;
+        margin: 3px;
+     font-weight:900;
+    }
+</style>
+<section class="section">
+    <div class="r-container">
+         @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["success"]</strong>
+            </div>
+
+        }
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Documents to Upload</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <ul style="list-style-type: lower-roman;">
+                                <li>
+                                    VALID WORK PERMIT
+                                    (Or if Student, College ID and Student Visa,)
+                                     
+                                </li>
+                                <li>
+                                    BRITISH PASSPORT (or other current Home Office Document authorizing you to work in UK)
+                                </li>
+                                <li>
+                                    NATIONAL INSURANCE (NI) CARD
+                                    (Or P45 or P60 or letter confirming you have applied for Ni
+                                </li>
+                                <li>
+                                    PROOF OF ADDRESS
+                                    E.g. Driving License, Utility Bill, or any formal letter with your name and address
+                                </li>
+                                <li>
+                                    2 CURRENT PASSPORT SIZE PHOTOGRAPHS
+                                </li>
+                                <li>
+                                    CRIMINAL RECORDS BUREAU CERTIFICATE
+                                    (CRB) you apply with us.
+                                </li>
+                                <li>
+                                    TRAINING CERTIFICATES, e.g. Moving & Handling, Basic Aid etc. If you do not have the certificates we can provide training
+                                </li>
+                                <li>REHABILITATION OF EX- OFFENDERS ACT 1974 <a class="btn btn-primary" href="~/REHABILITATION_OF_EX_OFFENDERS_ACT1974-ChosenHealthcareLtd.pdf" target="_blank">Download and fill</a></li>
+                                <li>RIGHT TO WORK ENQUIRY AGREEMENT <a class="btn btn-primary" href="~/RIGHT_TO_WORK_ENQUIRY_AGREEMENT-ChosenHealthcareLtd.pdf" target="_blank">Download and fill</a></li>
+                                 
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h4 style="text-align: center;">Uploaded Documents</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Title
+                                        </th>
+                                        <th>
+                                            Document
+                                        </th>
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.DocumentsList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                            <td>
+                                                <a href="@item.FileUrl" download="@item.Title" class="btn btn-success">Download</a>
+                                            </td>
+
+                                            <td>
+                                                <form method="post" asp-page-handler="Delete">
+                                                    <input type="hidden" value="@item.Id" name="id" />
+                                                    <input type="submit" value="X" class="btn btn-danger" />
+
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12" style="margin-top:20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Upload Document</h4>
+                            <form method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="Application.Id" />
+                                <input type="hidden" asp-for="Application.Surname" />
+                                <div class="form-group">
+                                    <label asp-for="Documents.Title" class="control-label"></label>
+                                    <input asp-for="Documents.Title" class="form-control" />
+                                    <span asp-validation-for="Documents.Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Select Document for Upload</label>
+                                    <div class="">
+                                        <input class="form-control" type="file" name="choosenhealthcare" />
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Add Document" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a asp-page="./ApplicationStatus" asp-route-id="@Model.Application.Id" style="float:right;" class="btn btn-primary">Next Continue</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

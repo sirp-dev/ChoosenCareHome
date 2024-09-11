@@ -1,0 +1,73 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.MessagesPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Staff Messages</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table datatable">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>Date</th>
+            <th>
+                User
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Title)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Read)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @{ int sn= 0;}
+    <tbody>
+        @foreach (var item in Model.Message)
+        {
+            <tr>
+                <td>@{sn++; }
+                @sn
+                </td>
+                <td>
+                    @item.Date.ToString("ddd dd MMM, yyyy")<br />
+                    @item.Date.ToString("HH:mm")
+                </td>
+                <td>
+                    @if (item.User != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.User.Surname)
+                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                    }
+                    else
+                    {
+                        if (item.All == true)
+                        {
+                            <span>All Staff</span>
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Read)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-danger">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

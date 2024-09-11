@@ -1,0 +1,138 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.IndexModel
+
+@{
+    ViewData["Title"] = "TimeSheet";
+    var daysOfWeek = new[] { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+    var firstDayOfMonth = new DateTime(Model.Year, Model.Month, 1);
+    var daysInMonth = DateTime.DaysInMonth(Model.Year, Model.Month);
+    var startDayOfWeek = (int)firstDayOfMonth.DayOfWeek;
+    var previousMonth = new DateTime(Model.Year, Model.Month, 1).AddMonths(-1);
+    var nextMonth = new DateTime(Model.Year, Model.Month, 1).AddMonths(1);
+    var monthName = firstDayOfMonth.ToString("MMMM yyyy");
+}
+
+
+<h4 style="font-weight:900;">@monthName</h4>
+
+<div class="row mb-3">
+    <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6 mb-2 mb-md-0">
+        <form method="get">
+            <input type="hidden" name="year" value="@previousMonth.Year" />
+            <input type="hidden" name="month" value="@previousMonth.Month" />
+            <button type="submit" class="btn btn-primary btn-block" style="width:100%;">&larr; Previous</button>
+        </form>
+    </div>
+
+    <div class="col-lg-2 col-md-3 col-xs-12 col-sm-6 mb-2 mb-md-0">
+        <form method="get">
+            <input type="hidden" name="year" value="@nextMonth.Year" />
+            <input type="hidden" name="month" value="@nextMonth.Month" />
+            <button type="submit" class="btn btn-primary btn-block">Next &rarr;</button>
+        </form>
+    </div>
+
+    <div class="col-lg-5 col-md-12 col-xs-12 col-sm-12 mb-2 mb-md-0" style=" margin-top: 10px;">
+        <form method="get">
+            <div class="input-group">
+                <input type="date" name="date" class="form-control" />
+                <button type="submit" class="btn btn-primary mt-2 mt-md-0 btnx-primary">Go</button>
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @foreach (var day in daysOfWeek)
+            {
+                <th>@day</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @for (int i = 0; i < startDayOfWeek; i++)
+            {
+                <td></td>
+            }
+
+            @for (int day = 1; day <= daysInMonth; day++)
+            {
+                if ((day + startDayOfWeek - 1) % 7 == 0 && day != 1)
+                {
+                @:</tr><tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+                <td>
+                    @{
+                        bool checkshet = false;
+                        DateTime chdate = new DateTime(Model.Year, Model.Month, day);
+                        var sheetavailable = Model.TimeSheet.FirstOrDefault(x => x.Date.Date == chdate.Date);
+                        if (sheetavailable != null)
+                        {
+                            if (sheetavailable.UserTimeSheet.Count() > 0)
+                            {
+                                checkshet = true;
+                            }
+                        }
+
+                        string datet = new DateTime(Model.Year, Model.Month, day).ToString("dd/MM/yyyy");
+
+                        string avs = "";
+                        string bordercc = "";
+                        if (chdate.Date == DateTime.UtcNow.AddHours(1).Date)
+                        {
+                            bordercc = "main-timsheet-today";
+                        }
+                        if (checkshet == true)
+                        {
+                            avs = "sheetfull";
+                        }
+
+                    }
+
+                    <a asp-page="./Details" asp-route-date="@datet" class="btn btn-primary @bordercc @avs">@day</a>
+                </td>
+            }
+
+            @for (int i = (daysInMonth + startDayOfWeek) % 7; i < 7 && i != 0; i++)
+            {
+                <td></td>
+            }
+        </tr>
+    </tbody>
+</table>
+
+

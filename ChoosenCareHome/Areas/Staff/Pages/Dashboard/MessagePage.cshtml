@@ -1,0 +1,54 @@
+﻿@page
+@model ChoosenCareHome.Areas.Staff.Pages.Dashboard.MessagePageModel
+@{
+}
+
+<h1>My Messages</h1>
+
+ 
+<table class="table datatable">
+    <thead>
+        <tr>
+            <th>S/N</th>
+
+            <th>Date</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Title)
+            </th>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Message[0].Read)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @{ int sn = 0;}
+    <tbody>
+        @foreach (var item in Model.Message)
+        {
+            <tr>
+                <td>
+                    @{ sn++;}
+                    @sn
+                </td>
+                <td>
+                    @item.Date.ToString("ddd dd MMM, yyyy")<br />
+                    @item.Date.ToString("HH:mm")
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Read)
+                </td>
+                <td>
+                    <a asp-page="./MsgDetails" asp-route-id="@item.Id" class="btn btn-danger">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

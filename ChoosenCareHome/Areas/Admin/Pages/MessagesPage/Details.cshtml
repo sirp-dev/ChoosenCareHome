@@ -1,0 +1,74 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.MessagesPage.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Message Details</h1>
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Message.Date.ToString("ddd dd MMM, yyyy")
+            <br />
+            @Model.Message.Date.ToString("HH:mm")
+        </dd>
+
+        @if (Model.Message.User != null)
+        {
+            <dt class="col-sm-2">
+                Staff
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Message.User.FirstName)
+                @Html.DisplayFor(model => model.Message.User.Surname)
+                @Html.DisplayFor(model => model.Message.User.MiddleName)
+            </dd>
+            <dt class="col-sm-2">
+                Email
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Message.User.Email)
+            </dd>
+            <dt class="col-sm-2">
+                Phone
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Message.User.PhoneNumber)
+            </dd>
+        }
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Message.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.All)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message.All)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.Read)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message.Read)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Message?.Id" class="btn btn-warning">Edit</a>
+    <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+</div>

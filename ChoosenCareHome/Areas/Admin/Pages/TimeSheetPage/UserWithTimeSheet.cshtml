@@ -1,0 +1,101 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.UserWithTimeSheetModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">TIMESHEET REPORT FOR @if(Model.MonthYearTitle != null){ @Model.MonthYearTitle.ToUpper()}</h3>
+
+
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["success"]</strong>
+            </div>
+
+        }
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped datatable">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            Fullname
+                        </th>
+
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Total Sheet</th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.UserList)
+                    {
+                        <tr>
+
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalSheets)
+                            </td>
+                            <td>
+
+                                <div class="dropdown">
+
+                                    <button class="btn btn-success" href="#" data-bs-toggle="dropdown">
+                                        Action
+                                    </button><!-- End Messages Icon -->
+
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+
+                                        <li>
+                                            <a class="dropdown-item" asp-page="./TimesheetDetails" asp-route-id="@item.UserId" asp-route-year="@Model.Year" asp-route-month="@Model.Month">Details</a>
+
+                                        </li>
+                                        @*<li>
+                                            <a class="dropdown-item" asp-page="./Invoice" asp-route-id="@item.UserId">Invoice</a>
+                                        </li>*@
+                                       
+                                    </ul><!-- End Messages Dropdown Items -->
+
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

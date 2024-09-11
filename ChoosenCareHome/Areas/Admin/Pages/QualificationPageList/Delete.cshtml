@@ -1,0 +1,52 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.QualificationPageList.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Qualification</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Qualification.QualificationsItem)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Qualification.QualificationsItem)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Qualification.SchoolCollege)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Qualification.SchoolCollege)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Qualification.GradeResult)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Qualification.GradeResult)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Qualification.DatesFromTo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Qualification.DatesFromTo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Qualification.Application)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Qualification.Application.Id)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Qualification.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

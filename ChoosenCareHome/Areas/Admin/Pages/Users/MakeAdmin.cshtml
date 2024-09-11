@@ -1,0 +1,105 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.Users.MakeAdminModel
+
+@{
+    ViewData["Title"] = "MakeAdmin";
+}
+
+<h1>Admin Status</h1>
+
+ 
+<div class="row">
+    <div class="col-md-12">
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.MiddleName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.MiddleName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.Surname)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.Surname)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.RegistrationNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.RegistrationNumber)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.Role)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.Role)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.UserStatus)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.UserStatus)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.UserName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.UserName)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.Email)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.AppUser.PhoneNumber)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.AppUser.PhoneNumber)
+            </dd>
+
+        </dl>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="id" value="@Model.AppUser.Id" />
+
+            <div class="form-group">
+                @if (Model.AppUser.Role == "Admin")
+                {
+                    <input type="submit" value="Remove from Admin" class="btn btn-danger" />
+
+                }
+                else
+                {
+                    <input type="submit" value="Make Admin" class="btn btn-primary" />
+
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

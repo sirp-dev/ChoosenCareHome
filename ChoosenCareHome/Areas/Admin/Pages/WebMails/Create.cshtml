@@ -1,0 +1,61 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.WebMails.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    
+
+}
+
+<h1>Create</h1>
+
+<h4>MailSystem</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MailSystem.Email" class="control-label"></label>
+                <input asp-for="MailSystem.Email" class="form-control" />
+                <span asp-validation-for="MailSystem.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailSystem.Mail" class="control-label"></label>
+                <input asp-for="MailSystem.Mail" class="form-control" />
+                <span asp-validation-for="MailSystem.Mail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailSystem.Title" class="control-label"></label>
+                <input asp-for="MailSystem.Title" class="form-control" />
+                <span asp-validation-for="MailSystem.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailSystem.Retries" class="control-label"></label>
+                <input asp-for="MailSystem.Retries" class="form-control" />
+                <span asp-validation-for="MailSystem.Retries" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailSystem.NotificationStatus" class="control-label"></label>
+                <select asp-for="MailSystem.NotificationStatus" class="form-control"></select>
+                <span asp-validation-for="MailSystem.NotificationStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MailSystem.NotificationType" class="control-label"></label>
+                <select asp-for="MailSystem.NotificationType" class="form-control"></select>
+                <span asp-validation-for="MailSystem.NotificationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,31 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.SuccessFeedbackModel
+@{
+}
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Application Status</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Application Status</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Hello @Model.Application.Surname @Model.Application.FirstName @Model.Application.MiddleName </h2>
+                <h6>
+                    Thank you for submitting your information! We've received your details and will be in touch shortly. Your interest in Chosen Healthcare is greatly appreciated. We look forward to connecting with you soon!
+                </h6>
+            </div>
+        </div>
+    </div>
+    </section>

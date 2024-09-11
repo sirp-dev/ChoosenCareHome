@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Account - Chosen Healthcare - we prioritize the well-being and comfort of our clients</title>
+    <link rel="icon" href="~/img/chosen-logo.png" type="image/x-icon" />
+     <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+     
+</head>
+<body>
+    <div style="text-align:center;margin:0 auto;">
+        <a href="/">
+            <img style="text-align:center;margin:0 auto;max-height:90px;" src="~/img/chosen-logo.png" />
+
+        </a>
+        <h4 style="color:black;font-weight:900;text-align:center;">Caring with Compassion, Respect and Dignity</h4>
+
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    @RenderBody()
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+         
+        <section class="px-lg-0 px-4 py-lg-5 py-4 bg-accent-color-1">
+            <div class="r-container text-white">
+                
+                 <div class="text-center p-2">© Copyright 2024. All Rights Reserved. Chosen Healthcare</div>
+            </div>
+        </section>
+    </footer>
+
+</body> 
+
+   @await RenderSectionAsync("Scripts", required: false)
+
+</html>

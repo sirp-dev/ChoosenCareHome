@@ -1,0 +1,46 @@
+﻿@page
+@model ChoosenCareHome.Areas.Staff.Pages.Dashboard.MsgDetailsModel
+
+@{
+    ViewData["Title"] = "MsgDetails";
+}
+
+<h1>Message Details</h1>
+
+<div>
+
+    <dl class="row">
+        <dt class="col-sm-2">
+            Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Message.Date.ToString("ddd dd MMM, yyyy")
+            <br />
+            @Model.Message.Date.ToString("HH:mm")
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Message.Description)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message.Read)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message.Read)
+        </dd>
+      
+    </dl>
+</div>
+<div>
+    <a asp-page="./MessagePage" class="btn btn-primary">Back to List</a>
+</div>

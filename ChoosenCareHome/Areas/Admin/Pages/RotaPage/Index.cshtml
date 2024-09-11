@@ -1,0 +1,74 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.RotaPage.IndexModel
+
+@{
+ }
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Rota Management</h3>
+
+        <p>
+            <a asp-page="Create" class="btn btn-primary">Add New</a>
+        </p>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success">
+                <strong>@TempData["success"]</strong>
+            </div>
+
+        }
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped datatable">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserRota[0].Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserRota[0].PostCode)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserRota[0].Date)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                @{
+                    int sn = 0;
+                }
+                <tbody>
+                    @foreach (var item in Model.UserRota)
+                    {
+                        <tr>
+                            <td>
+                                @{
+                                    sn++;
+                                }
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PostCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a> 
+                                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> 
+                                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

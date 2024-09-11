@@ -1,0 +1,105 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.HealthDeclarationModel
+@{
+}
+
+
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Health Declaration</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Health Declaration</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="r-container">
+        <h4 style="font-size:15px;text-align:center;">Private & Confidential</h4>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 style="text-align: center;">Carers/Support workers are required to complete this Health Declaration. Any positive answers will not necessarily affect your application. Please list any medical conditions (past or present) which may affect your ability to do the job.</h4>
+
+
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    <strong>@TempData["success"]</strong>
+                                </div>
+
+                            }
+                            <form method="post">
+                                <input type="hidden" asp-for="ApplicationId" />
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.OccupationalHealthAssessments[0].Title)
+                                            </th>
+                                            <th>
+                                                Yes/No
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.OccupationalHealthAssessments[0].Details)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int i = 0; i < Model.OccupationalHealthAssessments.Count; i++)
+                                        {
+                                            <input asp-for="@Model.OccupationalHealthAssessments[i].Id" name="OccupationalHealthAssessments[@i].Id" hidden="hidden" />
+                                            <tr>
+                                                <td>
+                                                    <span class="">
+                                                        @Html.DisplayFor(model => model.OccupationalHealthAssessments[i].Title)
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <input asp-for="@Model.OccupationalHealthAssessments[i].Status" name="OccupationalHealthAssessments[@i].Status" class="form-control" placeholder="YES/NO" />
+
+                                                </td>
+                                                <td>
+                                                    <input asp-for="@Model.OccupationalHealthAssessments[i].Details" name="OccupationalHealthAssessments[@i].Details" class="form-control"/>
+                                                </td>
+                                            </tr>
+
+                                        }
+
+
+
+
+                                    </tbody>
+
+                                </table>
+                                <input type="submit" class="btn btn-primary" value="Update" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <a asp-page="./VacinationReport" asp-route-id="@Model.ApplicationId" style="float:right;" class="btn btn-primary">Next Vacination Report</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

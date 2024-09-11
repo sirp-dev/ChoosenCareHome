@@ -1,0 +1,143 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.HealthCareQualificationModel
+
+@{
+    ViewData["Title"] = "HealthCareQualification";
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">HealthCare Qualification</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">HealthCare Qualification</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="r-container">
+        <h4 style="font-size:15px;text-align:center;">Private & Confidential</h4>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 style="text-align: center;">Relevant Training/Qualifications in Healthcare and Certificates Date</h4>
+
+
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    <strong>@TempData["success"]</strong> 
+                                </div>
+                                
+                            }
+                            <form method="post">
+                                <input type="hidden" asp-for="ApplicationId" />
+
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.HealthQualifications[0].Name)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.HealthQualifications[0].Status)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.HealthQualifications[0].Date)
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int i = 0; i < Model.HealthQualifications.Count; i++)
+                                        {
+                                            <input asp-for="@Model.HealthQualifications[i].Id" name="HealthQualifications[@i].Id" hidden="hidden" />
+                                            <tr>
+                                                <td>
+                                                    <span class="">
+                                                        @Html.DisplayFor(model => model.HealthQualifications[i].Name)
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <input asp-for="@Model.HealthQualifications[i].Status" name="HealthQualifications[@i].Status" class="form-control" placeholder="YES/NO" />
+
+                                                </td>
+                                                <td>
+                                                    <input asp-for="@Model.HealthQualifications[i].Date" name="HealthQualifications[@i].Date" class="form-control" placeholder="DD/MM/YYYY" />
+                                                </td>
+                                            </tr>
+
+                                        }
+
+
+
+
+                                    </tbody>
+
+                                </table>
+                                <input type="submit" class="btn btn-primary" value="Update" />
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <a asp-page="./Employment" asp-route-id="@Model.ApplicationId" style="float:right;" class="btn btn-primary">Next Employment History/Work Experience</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script>
+            $(document).ready(function () {
+    $('.updateForm').submit(function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        var form = $(this);
+        var status = form.find('.statusSelect').val();
+        var date = form.find('.dateInput').val();
+        var id = form.data('id');
+
+        $.ajax({
+            url: '/Data/HealthCareQualification?id=' + @Model.ApplicationId,
+            type: 'POST',
+            data: {
+                id: id,
+                status: status,
+                date: date
+            },
+            success: function (result) {
+                // Handle success
+                console.log(result);
+                if (result.success) {
+                    alert(result.message);
+                } else {
+                    alert("Unable to update.");
+                }
+            },
+            error: function (xhr, status, error) {
+                // Handle errors
+                console.error(xhr.responseText);
+                alert("Unable to update.");
+            }
+        });
+    });
+});
+
+    </script>
+}
+

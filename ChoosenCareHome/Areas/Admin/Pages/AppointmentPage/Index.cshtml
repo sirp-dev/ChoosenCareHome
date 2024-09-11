@@ -1,0 +1,71 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.AppointmentPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Appointments</h1>
+ 
+<table class="table datatable">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>
+                Fullname
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].Postcode)
+            </th>
+             
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment[0].Subject)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    @{ int sn = 0;}
+    <tbody>
+@foreach (var item in Model.Appointment) {
+        <tr>
+            @{ sn++;}
+            <td>
+                @sn
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            
+                @Html.DisplayFor(modelItem => item.FirstName)
+             
+                @Html.DisplayFor(modelItem => item.MiddleName)
+             
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postcode)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            
+            <td> 
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a>  
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

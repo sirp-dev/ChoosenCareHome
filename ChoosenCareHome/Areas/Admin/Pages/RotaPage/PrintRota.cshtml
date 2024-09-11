@@ -1,0 +1,241 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.RotaPage.PrintRotaModel
+
+
+@{
+    //Layout = "/Pages/Shared/_Pdf_Layout.cshtml";
+    Layout = null;
+}
+
+<html>
+<head>
+    <title id="page-title-j" style="text-transform: uppercase;">
+        Rota - Chosen Healthcare - we prioritize the well-being and comfort of our clients
+    </title>
+    <link rel="shortcut icon" href="~/img/chosen-logo.png" type="image/x-icon">
+    <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // Function to handle download
+
+         function downloadFunction() {
+            setTimeout(() => {
+                const element = document.getElementById('body');
+                 const formattedDate2 = '@Model.UserRota.Id';
+                const options = {
+                    margin: [10, 10, 10, 10], // Adjust margins if needed
+                    filename: 'Choosen_HC_Rota_' + formattedDate2 + '.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 2, useCORS: true }, // Adjust scale if necessary, useCORS for images
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                html2pdf().set(options).from(element).save();
+            }, 1500); // Delay to allow content to render
+        }
+
+        
+    </script>
+    <style>
+        @@media print {
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="downloadFunction()" class="btn btn-primary no-print" style="margin:20px;padding:10px;text-align:center;">Download as PDF</button>
+        <div id="body" class="avoid-break">
+            <style>
+                body {
+                    margin: 0;
+                    font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    color: #212529;
+                    text-align: left;
+                    background-color: #fff;
+                    word-break: break-all;
+                }
+
+                .card-header1 {
+                    background-color: #007D53 !important;
+                    color: white;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+
+                .input-group-sm > .custom-select, .input-group-sm > .form-control:not(textarea) {
+                    height: auto;
+                }
+
+                .daiv {
+                    box-shadow: 0px 11px 35px 0px #c5b5b4;
+                    word-break: break-all;
+                }
+
+                .secdaiv {
+                    box-shadow: 0px 4px 5px 0px #c5b5b4;
+                    word-break: break-all;
+                }
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    padding: 5px;
+                    border-bottom: 1px solid #ccc;
+                    text-align: left;
+                    vertical-align: top;
+                    page-break-inside: avoid; /* Prevent table rows from being split */
+                }
+
+                th {
+                    width: 30%;
+                }
+
+                @@media print {
+                    .avoid-break {
+                        page-break-inside: avoid;
+                    }
+                }
+
+                img {
+                    page-break-inside: avoid !important;
+                }
+
+                p {
+                    page-break-inside: avoid !important;
+                }
+
+                tr {
+                    page-break-inside: avoid !important;
+                }
+
+                .secdaiv {
+                    page-break-inside: avoid !important;
+                }
+
+                h5 {
+                    page-break-inside: avoid !important;
+                }
+
+                span {
+                    page-break-inside: avoid !important;
+                }
+
+                strong {
+                    page-break-inside: avoid !important;
+                }
+
+                .personel {
+                    page-break-inside: avoid !important;
+                }
+            </style>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header" style="margin:0 auto;text-align:center;">
+                            <img src="~/img/chosen-logo.png" style="margin:0 auto;text-align:center;max-height:80px;padding:10px;" />
+                        </div>
+                        <div class="card-header card-header1">
+                            <h4 class="card-title" style="text-transform:uppercase;">Chosen Healthcare</h4>
+                            <h6 class="card-title">info@chosenhealthcare.co.uk</h6>
+                            <h4 class="card-title">ROTA</h4>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <table class="table-bordered" style="width:100%; border-collapse: collapse;margin-bottom:7px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th colspan="2" style="text-align:center;font-weight:900;background-color:#87eda6;color:black;">
+                                                                DETAILS
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th align="start" style="width:50%;">
+                                                                Post Code
+                                                            </th>
+                                                            <td align="start">
+                                                                @Html.DisplayFor(model => model.UserRota.PostCode)
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th align="start" style="width:50%;">
+                                                                Date
+                                                            </th>
+                                                            <td align="start">
+                                                                @Model.DateTitle
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                             
+
+                                            <div class="col-md-12">
+                                                <table class="table-bordered" style="width: 100%; border-collapse: collapse; margin-bottom: 7px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width:8%;">
+                                                                S/N
+                                                            </th>
+                                                            <th style="width:30%;">
+                                                                Staff
+                                                            </th>
+                                                            <th style="width:40%;">
+                                                                Date
+                                                            </th>
+                                                            <th style="width:22%;">
+                                                                Time
+                                                            </th>
+                                                        </tr>
+                                                        @{ int sn = 0; }
+                                                        @foreach (var item in Model.UserTimeSheets)
+                                                        {
+                                                            <tr>
+                                                                <td align="right">
+                                                                    @(++sn)
+                                                                </td>
+                                                                <td align="right">
+                                                                    @Html.DisplayFor(modelItem => item.User.Title)
+                                                                    @Html.DisplayFor(modelItem => item.User.Surname)
+                                                                    @Html.DisplayFor(modelItem => item.User.FirstName)
+                                                                    @Html.DisplayFor(modelItem => item.User.MiddleName)
+                                                                </td>
+                                                                <td align="right">
+                                                                    @item.TimeSheet.Date.ToString("ddd dd MMM, yyyy")
+                                                                </td>
+                                                                <td align="right">
+                                                                    @item.StartTime.ToString(@"hh\:mm") - @item.EndTime.ToString(@"hh\:mm")
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+ 

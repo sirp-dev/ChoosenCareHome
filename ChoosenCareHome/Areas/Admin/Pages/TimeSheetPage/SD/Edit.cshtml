@@ -1,0 +1,75 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.SD.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UserTimeSheet</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserTimeSheet.Id" />
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.UserId" class="control-label"></label>
+                <select asp-for="UserTimeSheet.UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserTimeSheet.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.StartTime" class="control-label"></label>
+                <input asp-for="UserTimeSheet.StartTime" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.EndTime" class="control-label"></label>
+                <input asp-for="UserTimeSheet.EndTime" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.Report" class="control-label"></label>
+                <input asp-for="UserTimeSheet.Report" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.Report" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.Address" class="control-label"></label>
+                <input asp-for="UserTimeSheet.Address" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.PostCode" class="control-label"></label>
+                <input asp-for="UserTimeSheet.PostCode" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.PostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.RatePerHour" class="control-label"></label>
+                <input asp-for="UserTimeSheet.RatePerHour" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.RatePerHour" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.Break" class="control-label"></label>
+                <input asp-for="UserTimeSheet.Break" class="form-control" />
+                <span asp-validation-for="UserTimeSheet.Break" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserTimeSheet.TimeSheetId" class="control-label"></label>
+                <select asp-for="UserTimeSheet.TimeSheetId" class="form-control" asp-items="ViewBag.TimeSheetId"></select>
+                <span asp-validation-for="UserTimeSheet.TimeSheetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

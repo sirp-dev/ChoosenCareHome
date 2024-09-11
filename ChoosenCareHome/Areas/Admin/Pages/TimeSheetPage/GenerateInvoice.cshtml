@@ -1,0 +1,122 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.GenerateInvoiceModel
+@{
+}
+
+
+<h4>Generate Invoice</h4>
+<h5>@Model.Fullname (@Model.UserProfile.Email)</h5>
+<hr />
+@if (TempData["error"] != null)
+{
+    <span class="bg-danger">
+        @TempData["error"]
+    </span>
+}
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="Invoice.UserId" value="@Model.UserProfile.Id" hidden="hidden" />
+            <input asp-for="Year" hidden="hidden" />
+            <input asp-for="Month" hidden="hidden" />
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.PeriodStart" class="control-label"></label>
+                        <input asp-for="Invoice.PeriodStart" class="form-control" />
+                        <span asp-validation-for="Invoice.PeriodStart" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.PeriodEnd" class="control-label"></label>
+                        <input asp-for="Invoice.PeriodEnd" class="form-control" />
+                        <span asp-validation-for="Invoice.PeriodEnd" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.Rate" class="control-label"></label>
+                        <input asp-for="Invoice.Rate" class="form-control" />
+                        <span asp-validation-for="Invoice.Rate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.TotalHours" class="control-label"></label>
+                        <input asp-for="Invoice.TotalHours" class="form-control" />
+                        <span asp-validation-for="Invoice.TotalHours" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.TotalPay" class="control-label"></label>
+                        <input asp-for="Invoice.TotalPay" class="form-control" />
+                        <span asp-validation-for="Invoice.TotalPay" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.NetPay" class="control-label"></label>
+                        <input asp-for="Invoice.NetPay" class="form-control" />
+                        <span asp-validation-for="Invoice.NetPay" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.IncomeTax" class="control-label"></label>
+                        <input asp-for="Invoice.IncomeTax" class="form-control" />
+                        <span asp-validation-for="Invoice.IncomeTax" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.NationalInsurance" class="control-label"></label>
+                        <input asp-for="Invoice.NationalInsurance" class="form-control" />
+                        <span asp-validation-for="Invoice.NationalInsurance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.NINumber" class="control-label"></label>
+                        <input asp-for="Invoice.NINumber" class="form-control" />
+                        <span asp-validation-for="Invoice.NINumber" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.P45" class="control-label"></label>
+                        <input asp-for="Invoice.P45" class="form-control" />
+                        <span asp-validation-for="Invoice.P45" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.TaxCode" class="control-label"></label>
+                        <input asp-for="Invoice.TaxCode" class="form-control" />
+                        <span asp-validation-for="Invoice.TaxCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Invoice.PaymentMethod" class="control-label"></label>
+                        <input asp-for="Invoice.PaymentMethod" class="form-control" />
+                        <span asp-validation-for="Invoice.PaymentMethod" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Generate Invoice" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

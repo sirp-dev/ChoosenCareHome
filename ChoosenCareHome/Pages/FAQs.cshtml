@@ -1,0 +1,183 @@
+﻿@page
+@model ChoosenCareHome.Pages.FAQsModel
+@{
+}
+<style>
+    .faq-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .faq {
+        margin-bottom: 20px;
+    }
+
+    .question {
+        font-weight: bold;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #f1f1f1;
+        border-radius: 5px;
+    }
+
+    .answer {
+        display: none;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+        input[type="checkbox"]:checked ~ .answer {
+            display: block;
+        }
+    .question {
+        font-weight: bold;
+        cursor: pointer;
+        padding: 10px;
+        background-color: #719949;
+        color: white;
+        border-radius: 5px;
+    }
+</style>
+<section class="section position-relative" style="background-image: url(img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Frequently Asked Questions</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Frequently Asked Questions</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+        <div class="d-flex flex-lg-row flex-column-reverse gap-12">
+            <div class="col col-lg-12">
+                <div class="faq-container">
+                    <div class="faq">
+                        <input type="checkbox" id="q1">
+                        <label for="q1" class="question">
+                            What types of healthcare services do you offer?
+                        </label>
+                        <div class="answer">
+                            
+
+                            We offer a comprehensive range of healthcare services including hourly and daily home care, specialized care for conditions such as Alzheimer's and dementia, palliative care, respite care, and hospital-to-home care.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q2">
+                        <label for="q2" class="question">
+                            How do I know if home care is the right option for me or my loved one?
+
+                        </label>
+                        <div class="answer">
+                            
+                            Our experienced team can conduct a personalized assessment to evaluate your needs and preferences. We'll work with you to determine the most suitable care plan that meets your individual requirements and promotes your well-being.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q3">
+                        <label for="q3" class="question">
+                            What qualifications do your caregivers have?
+
+                        </label>
+                        <div class="answer">
+                            
+                            Our caregivers undergo thorough background checks, training, and certification to ensure they have the skills and expertise needed to provide high-quality care. They are compassionate individuals who are dedicated to making a positive difference in the lives of our clients.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q4">
+                        <label for="q4" class="question">
+                            Can I request a specific caregiver?
+
+                        </label>
+                        <div class="answer">
+                            
+                            Yes, we understand the importance of building trusting relationships with caregivers. While we cannot guarantee the availability of a specific caregiver at all times, we will do our best to accommodate your preferences whenever possible.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q5">
+                        <label for="q5" class="question">
+                            How do you ensure the safety and security of your clients?
+
+                        </label>
+                        <div class="answer">
+                            
+                            We prioritize the safety and security of our clients by implementing strict protocols and procedures. Our caregivers are trained to handle various situations and are equipped with the necessary knowledge and skills to provide care in a safe and responsible manner.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q6">
+                        <label for="q6" class="question">
+                            What measures do you take to protect client privacy?
+
+                        </label>
+                        <div class="answer">
+                            
+                            We adhere to strict privacy policies and procedures to safeguard the confidentiality of client information. Our team is trained to handle sensitive information with the utmost care and discretion, and we comply with all relevant privacy laws and regulations.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q7">
+                        <label for="q7" class="question">
+                            How do you handle emergencies outside of regular business hours?
+
+                        </label>
+                        <div class="answer">
+                            
+                            We have procedures in place to handle emergencies outside of regular business hours. Our clients have access to a 24/7 emergency hotline where they can reach our team for immediate assistance and support.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q8">
+                        <label for="q8" class="question">
+                            Do you accept insurance for your services?
+
+                        </label>
+                        <div class="answer">
+                            
+                            We accept various forms of insurance for our services, depending on the coverage provided by your insurance provider. Our team can assist you in verifying your insurance coverage and determining the best payment options for your needs.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q9">
+                        <label for="q9" class="question">
+                            Can I change or adjust my care plan if my needs change?
+
+                        </label>
+                        <div class="answer">
+                           
+                            Yes, we understand that your needs may change over time. We offer flexible care plans that can be adjusted to accommodate your evolving needs and preferences. Our team will work closely with you to ensure that your care plan remains tailored to your individual requirements.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <input type="checkbox" id="q10">
+                        <label for="q10" class="question">
+                            How can I get started with your services?
+
+                        </label>
+                        <div class="answer">
+                            
+                            Getting started with our services is easy! Simply contact us to schedule a consultation with one of our care coordinators. During the consultation, we'll discuss your needs, answer any questions you may have, and create a personalized care plan that meets your specific requirements.
+                        </div>
+                    </div>
+                   
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

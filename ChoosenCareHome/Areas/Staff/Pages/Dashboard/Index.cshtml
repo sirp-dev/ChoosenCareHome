@@ -1,0 +1,23 @@
+﻿@page
+@model ChoosenCareHome.Areas.Staff.Pages.Dashboard.IndexModel
+@{
+}
+
+<div>
+    <div class="row">
+        <a asp-page="/Dashboard/TimeSheet" asp-area="Staff">
+            <div class="col-md-5 btn btn-primary">
+                <h1>@Model.TimeSheet</h1>
+                <h4>TimeSheet</h4>
+            </div>
+        </a>
+        <a asp-page="/Dashboard/MessagePage" asp-area="Staff">
+            <div class="col-md-5 btn btn-primary">
+                <h1>@Model.Messages</h1>
+                <h4>Messages</h4>
+            </div>
+        </a>
+       
+         
+    </div>
+</div>

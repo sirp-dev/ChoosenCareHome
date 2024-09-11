@@ -1,0 +1,192 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.ReferencesModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">REFERENCES</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">REFERENCES</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="r-container">
+        <h4 style="font-size:15px;text-align:center;">
+            <strong>
+                NOTE:
+            </strong>
+            
+
+        </h4>
+        <ul>
+            <li>1. First Reference Must be your most recent employer (of at least 3 months duration) which must correspond with your employment history.</li>
+            <li>2. Second Reference will be Another of your Employers in the last 3 years</li>
+            <li>3. Third Reference Must be a fellow healthcare professional who does not live with you and is able to supply a character Reference of your personal and professional profile.</li>
+        </ul>
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 style="text-align: center;">REFERENCES</h4>
+                            @if (TempData["success"] != null)
+                            {
+                                <div class="alert alert-success">
+                                    <strong>@TempData["success"]</strong>
+                                </div>
+
+                            }
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].Name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].NameEmployer)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].Address)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].From)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].To)
+                                        </th>
+
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].PhoneNumber)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.ApplicationReferenceList[0].FaxNumber)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ApplicationReferenceList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.NameEmployer)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.From)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.To)
+                                            </td>
+                                            
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.FaxNumber)
+                                            </td>
+                                            <td>
+                                                <form method="post" asp-page-handler="Delete">
+                                                    <input type="hidden" value="@item.Id" name="id" />
+                                                    <input type="submit" value="X" class="btn btn-danger" />
+
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12" style="margin-top:20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Add New Reference</h4>
+                            <form method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="ApplicationReference.Id" />
+                                <input type="hidden" asp-for="ApplicationReference.ApplicationId" value="@Model.ApplicationId" />
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.Name" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.Name" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.NameEmployer" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.NameEmployer" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.NameEmployer" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.Address" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.Address" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.From" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.From" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.From" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.To" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.To" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.To" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.PhoneNumber" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.Email" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.Email" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ApplicationReference.FaxNumber" class="control-label"></label>
+                                    <input asp-for="ApplicationReference.FaxNumber" class="form-control" />
+                                    <span asp-validation-for="ApplicationReference.FaxNumber" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <input type="submit" value="Add" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a asp-page="./HealthDeclaration" asp-route-id="@Model.ApplicationId" style="float:right;" class="btn btn-primary">Next Health Declaration</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

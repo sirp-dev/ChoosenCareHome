@@ -1,0 +1,46 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.UserInvoicesModel
+@{
+}
+
+<h4>Invoices</h4>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>S/N</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Invoices</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.InvoiceGroupViewModel != null && Model.InvoiceGroupViewModel.Any())
+        {
+            int id = 1;
+            foreach (var group in Model.InvoiceGroupViewModel)
+            {
+                <tr>
+                    <td>@id</td>
+                    @{
+                        DateTime monthDate = new DateTime(group.Year, group.Month, 1);
+                    }
+                    <td>@monthDate.ToString("MMMM")</td>
+                    <td>@group.Year</td>
+                    <td>@group.UniqueUserCount</td>
+                    <td>
+                        <a asp-page="./UserWithTimeSheet" asp-route-year="@group.Year" asp-route-month="@group.Month">View</a>
+                    </td>
+                </tr>
+                id++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">No invoices found.</td>
+            </tr>
+        }
+    </tbody>
+</table>

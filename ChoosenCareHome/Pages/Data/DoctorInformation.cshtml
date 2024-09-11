@@ -1,0 +1,57 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.DoctorInformationModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Doctor Information</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Doctor Information</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+         <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Application.Id" hidden="hidden" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="Application.DoctorName" class="control-label"></label>
+                        <input asp-for="Application.DoctorName" class="form-control" />
+                        <span asp-validation-for="Application.DoctorName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoctorAddress" class="control-label"></label>
+                        <input asp-for="Application.DoctorAddress" class="form-control" />
+                        <span asp-validation-for="Application.DoctorAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoctorPostcode" class="control-label"></label>
+                        <input asp-for="Application.DoctorPostcode" class="form-control" />
+                        <span asp-validation-for="Application.DoctorPostcode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Application.DoctorPhone" class="control-label"></label>
+                        <input asp-for="Application.DoctorPhone" class="form-control" />
+                        <span asp-validation-for="Application.DoctorPhone" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" value="Save and Continue" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

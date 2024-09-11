@@ -1,0 +1,445 @@
+﻿@page
+@model ChoosenCareHome.Pages.Data.FormContinuationModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(../img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">Application Continuation</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">Application Continuation</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+<style>
+    .card{
+        margin-top:20px;
+    }
+</style>
+<section class="section">
+    <div class="r-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Please Type Yes/No or Type the required answer respectively</h4>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Application.Id" hidden="hidden" type="hidden" />
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>WORK PREFERENCE</h4>
+                            <p>To assist us in finding suitable work for you, please place a tick next to all specialties of which you have significant recent experience and are confident to carry out such duties.</p>
+                            <p>Please keep us informed from time to time of all developments in your career as the work we assign to you depends on accurate up to date information.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.FullTime_PartTime" class="control-label"></label>
+                                <input asp-for="Application.FullTime_PartTime" class="form-control" />
+                                <span asp-validation-for="Application.FullTime_PartTime" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.IfPartTime_HowManyHoursPerWeekDoYouWantToWork_HomeCareAndPopInVisits" class="control-label"></label>
+                                <input asp-for="Application.IfPartTime_HowManyHoursPerWeekDoYouWantToWork_HomeCareAndPopInVisits" class="form-control" />
+                                <span asp-validation-for="Application.IfPartTime_HowManyHoursPerWeekDoYouWantToWork_HomeCareAndPopInVisits" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.HomeCareAndPopInVisits" class="control-label"></label>
+                                <input asp-for="Application.HomeCareAndPopInVisits" class="form-control" />
+                                <span asp-validation-for="Application.HomeCareAndPopInVisits" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Hospitals" class="control-label"></label>
+                                <input asp-for="Application.Hospitals" class="form-control" />
+                                <span asp-validation-for="Application.Hospitals" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Nursing_ResidentialHomes" class="control-label"></label>
+                                <input asp-for="Application.Nursing_ResidentialHomes" class="form-control" />
+                                <span asp-validation-for="Application.Nursing_ResidentialHomes" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Morning_Day_Evening_NightSleeperDuty" class="control-label"></label>
+                                <input asp-for="Application.Morning_Day_Evening_NightSleeperDuty" class="form-control" />
+                                <span asp-validation-for="Application.Morning_Day_Evening_NightSleeperDuty" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Live-In Care</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.PleaseStateIfYouAreAbleToWorkAsA24_HourResidential_Live_In_Care" class="control-label"></label>
+                                <input asp-for="Application.PleaseStateIfYouAreAbleToWorkAsA24_HourResidential_Live_In_Care" class="form-control" />
+                                <span asp-validation-for="Application.PleaseStateIfYouAreAbleToWorkAsA24_HourResidential_Live_In_Care" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.IfYes_WouldYouLike_LongOrShort_Assignments" class="control-label"></label>
+                                <input asp-for="Application.IfYes_WouldYouLike_LongOrShort_Assignments" class="form-control" />
+                                <span asp-validation-for="Application.IfYes_WouldYouLike_LongOrShort_Assignments" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.WouldYouAcceptALive_InAssignmentSomeDistanceFromYourHome" class="control-label"></label>
+                                <input asp-for="Application.WouldYouAcceptALive_InAssignmentSomeDistanceFromYourHome" class="form-control" />
+                                <span asp-validation-for="Application.WouldYouAcceptALive_InAssignmentSomeDistanceFromYourHome" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.IfNo_PleaseSpecifyPreferredAreas" class="control-label"></label>
+                                <input asp-for="Application.IfNo_PleaseSpecifyPreferredAreas" class="form-control" />
+                                <span asp-validation-for="Application.IfNo_PleaseSpecifyPreferredAreas" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Care/Support Assistant ability schedule</h4>
+                            <p>Please indicate yes / No in the areas you have had previous experience</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Personal hygiene</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.Bath_Shower_StripWash" class="control-label"></label>
+                                <input asp-for="Application.Bath_Shower_StripWash" class="form-control" />
+                                <span asp-validation-for="Application.Bath_Shower_StripWash" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.BedBath" class="control-label"></label>
+                                <input asp-for="Application.BedBath" class="form-control" />
+                                <span asp-validation-for="Application.BedBath" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.UseOfBathAids" class="control-label"></label>
+                                <input asp-for="Application.UseOfBathAids" class="form-control" />
+                                <span asp-validation-for="Application.UseOfBathAids" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Shaving" class="control-label"></label>
+                                <input asp-for="Application.Shaving" class="form-control" />
+                                <span asp-validation-for="Application.Shaving" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.MouthCareIncDentures" class="control-label"></label>
+                                <input asp-for="Application.MouthCareIncDentures" class="form-control" />
+                                <span asp-validation-for="Application.MouthCareIncDentures" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.CareOfHair" class="control-label"></label>
+                                <input asp-for="Application.CareOfHair" class="form-control" />
+                                <span asp-validation-for="Application.CareOfHair" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Dressing_Undressing" class="control-label"></label>
+                                <input asp-for="Application.Dressing_Undressing" class="form-control" />
+                                <span asp-validation-for="Application.Dressing_Undressing" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Practical tasks</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.LightHousework" class="control-label"></label>
+                                <input asp-for="Application.LightHousework" class="form-control" />
+                                <span asp-validation-for="Application.LightHousework" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.WashingPersonalLaundry" class="control-label"></label>
+                                <input asp-for="Application.WashingPersonalLaundry" class="form-control" />
+                                <span asp-validation-for="Application.WashingPersonalLaundry" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Shopping" class="control-label"></label>
+                                <input asp-for="Application.Shopping" class="form-control" />
+                                <span asp-validation-for="Application.Shopping" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.BedMaking_ChangingBedLinen" class="control-label"></label>
+                                <input asp-for="Application.BedMaking_ChangingBedLinen" class="form-control" />
+                                <span asp-validation-for="Application.BedMaking_ChangingBedLinen" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.CollectingBenefits" class="control-label"></label>
+                                <input asp-for="Application.CollectingBenefits" class="form-control" />
+                                <span asp-validation-for="Application.CollectingBenefits" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Toileting</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.ContinenceCare" class="control-label"></label>
+                                <input asp-for="Application.ContinenceCare" class="form-control" />
+                                <span asp-validation-for="Application.ContinenceCare" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Bedpans_CommodesEtc" class="control-label"></label>
+                                <input asp-for="Application.Bedpans_CommodesEtc" class="form-control" />
+                                <span asp-validation-for="Application.Bedpans_CommodesEtc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.ChangingACatheterBag" class="control-label"></label>
+                                <input asp-for="Application.ChangingACatheterBag" class="form-control" />
+                                <span asp-validation-for="Application.ChangingACatheterBag" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EmptyingCatheterBag" class="control-label"></label>
+                                <input asp-for="Application.EmptyingCatheterBag" class="form-control" />
+                                <span asp-validation-for="Application.EmptyingCatheterBag" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Admin. Abilities</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.Confidentiality" class="control-label"></label>
+                                <input asp-for="Application.Confidentiality" class="form-control" />
+                                <span asp-validation-for="Application.Confidentiality" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.ReportWriting" class="control-label"></label>
+                                <input asp-for="Application.ReportWriting" class="form-control" />
+                                <span asp-validation-for="Application.ReportWriting" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.RecordingInstructionsFromGp_DistrictNurse" class="control-label"></label>
+                                <input asp-for="Application.RecordingInstructionsFromGp_DistrictNurse" class="form-control" />
+                                <span asp-validation-for="Application.RecordingInstructionsFromGp_DistrictNurse" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Observing_Recording" class="control-label"></label>
+                                <input asp-for="Application.Observing_Recording" class="form-control" />
+                                <span asp-validation-for="Application.Observing_Recording" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.ChangesInClientsCondition" class="control-label"></label>
+                                <input asp-for="Application.ChangesInClientsCondition" class="form-control" />
+                                <span asp-validation-for="Application.ChangesInClientsCondition" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Mobility</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.ManeuveringAndHandlingCourse" class="control-label"></label>
+                                <input asp-for="Application.ManeuveringAndHandlingCourse" class="form-control" />
+                                <span asp-validation-for="Application.ManeuveringAndHandlingCourse" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.UseOfHoistsMan_Elec" class="control-label"></label>
+                                <input asp-for="Application.UseOfHoistsMan_Elec" class="form-control" />
+                                <span asp-validation-for="Application.UseOfHoistsMan_Elec" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.UseOfWalkingAids" class="control-label"></label>
+                                <input asp-for="Application.UseOfWalkingAids" class="form-control" />
+                                <span asp-validation-for="Application.UseOfWalkingAids" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Previous exp.</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.PrivateHouse" class="control-label"></label>
+                                <input asp-for="Application.PrivateHouse" class="form-control" />
+                                <span asp-validation-for="Application.PrivateHouse" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Nursing_Residential" class="control-label"></label>
+                                <input asp-for="Application.Nursing_Residential" class="form-control" />
+                                <span asp-validation-for="Application.Nursing_Residential" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Home" class="control-label"></label>
+                                <input asp-for="Application.Home" class="form-control" />
+                                <span asp-validation-for="Application.Home" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>EQUAL OPPORTUNITIES MONITORING</h4>
+                            <p>Chosen Healthcare Ltd aims to be an equal opportunities employer. Employees are therefore put forward for work / shift irrespective of race, ethnic origin, disability, age and gender. In order to monitor the effectiveness of our policy, we request all candidates to provide the following information.</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.AgeGroup" class="control-label"></label>
+                                <input asp-for="Application.AgeGroup" class="form-control" placeholder="16 – 20 / 21 – 35 / 36 – 50 / 50+ " />
+                                <span asp-validation-for="Application.AgeGroup" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Registereddisability" class="control-label"></label>
+                                <input asp-for="Application.Registereddisability" class="form-control" />
+                                <span asp-validation-for="Application.Registereddisability" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.UnregisteredDisability" class="control-label"></label>
+                                <input asp-for="Application.UnregisteredDisability" class="form-control" />
+                                <span asp-validation-for="Application.UnregisteredDisability" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Nodisability" class="control-label"></label>
+                                <input asp-for="Application.Nodisability" class="form-control" />
+                                <span asp-validation-for="Application.Nodisability" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Please Yes/No appropriately which best describes your Ethnic Origin.</h4>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginWhiteEuropean" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginWhiteEuropean" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginWhiteEuropean" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginWhiteOther" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginWhiteOther" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginWhiteOther" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginBlackAfrican" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginBlackAfrican" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginBlackAfrican" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginBlackCaribbean" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginBlackCaribbean" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginBlackCaribbean" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginBlackOther" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginBlackOther" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginBlackOther" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.Indian" class="control-label"></label>
+                                <input asp-for="Application.Indian" class="form-control" />
+                                <span asp-validation-for="Application.Indian" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginPakistani" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginPakistani" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginPakistani" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginChinese" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginChinese" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginChinese" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.EthnicOriginOther" class="control-label"></label>
+                                <input asp-for="Application.EthnicOriginOther" class="form-control" />
+                                <span asp-validation-for="Application.EthnicOriginOther" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.HowDidYouHearAboutThePost" class="control-label"></label>
+                                <input asp-for="Application.HowDidYouHearAboutThePost" class="form-control" />
+                                <span asp-validation-for="Application.HowDidYouHearAboutThePost" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.AreYouRelatedOrDoYouKnowAnyMemberOfStaffAtChosenHealthcare" class="control-label"></label>
+                                <input asp-for="Application.AreYouRelatedOrDoYouKnowAnyMemberOfStaffAtChosenHealthcare" class="form-control" />
+                                <span asp-validation-for="Application.AreYouRelatedOrDoYouKnowAnyMemberOfStaffAtChosenHealthcare" class="text-danger"></span>
+                            </div>
+
+
+
+                           
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>REHABILITATION OF EX- OFFENDERS ACT 1974</h4>
+                            <p>
+                                You are advised that you are not entitled to withhold information about convictions, which are regarded as spent under the Act’. This is due to the nature of the work
+                                involved renders the post exempt from sec. 4(2) of the Act in accordance with the Rehabilitation of Offenders Act 974 (Exceptions) Order 1975.
+                            </p>
+                            <p>
+                                You are therefore required to give details of all convictions and cautions including
+                                ‘spent’ convictions. Any in formation, which you may give, will be strictly confidential and will be <strong>considered only</strong> in relation to this or a similar position for which you may be considered with Chosen Healthcare Ltd...
+                            </p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Application.HaveYouEverBeenConvictedOfACriminalOffence" class="control-label"></label>
+                                <input asp-for="Application.HaveYouEverBeenConvictedOfACriminalOffence" class="form-control" placeholder="YES / NO"/>
+                                <span asp-validation-for="Application.HaveYouEverBeenConvictedOfACriminalOffence" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Application.IfYesPleaseGiveDetailsOfAllConvictionsAndCautionsIncludingSpentConvictionsAndCautions" class="control-label"></label>
+                                <input asp-for="Application.IfYesPleaseGiveDetailsOfAllConvictionsAndCautionsIncludingSpentConvictionsAndCautions" class="form-control" />
+                                <span asp-validation-for="Application.IfYesPleaseGiveDetailsOfAllConvictionsAndCautionsIncludingSpentConvictionsAndCautions" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save and Continue" class="btn btn-primary" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

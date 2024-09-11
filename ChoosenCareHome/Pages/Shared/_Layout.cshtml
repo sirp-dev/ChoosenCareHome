@@ -1,0 +1,699 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0046) https://html.rometheme.pro/seniorsy/index.html-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheet -->
+    <link href="~/ui/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/ui/fontawesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" integrity="sha512-d0olNN35C6VLiulAobxYHZiXJmq+vl+BGIgAxQtD5+kqudro/xNMvv2yIHAciGHpExsIbKX3iLg+0B6d0k4+ZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/ui/brands.css">
+    <link rel="stylesheet" href="~/ui/regular.css">
+    <link rel="stylesheet" href="~/ui/solid.css">
+    <link rel="stylesheet" href="~/ui/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/ui/style.css">
+    <title>Chosen Healthcare - we prioritize the well-being and comfort of our clients</title>
+    <link rel="icon" href="~/img/chosen-logo.png" type="image/x-icon" />
+
+    <style class="fslightbox-styles">
+        .fslightbox-absoluted {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .fslightbox-fade-in {
+            animation: fslightbox-fade-in .3s cubic-bezier(0,0,.7,1)
+        }
+
+        .fslightbox-fade-out {
+            animation: fslightbox-fade-out .3s ease
+        }
+
+        .fslightbox-fade-in-strong {
+            animation: fslightbox-fade-in-strong .3s cubic-bezier(0,0,.7,1)
+        }
+
+        .fslightbox-fade-out-strong {
+            animation: fslightbox-fade-out-strong .3s ease
+        }
+
+        @@keyframes fslightbox-fade-in {
+            from {
+                opacity: .65
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @@keyframes fslightbox-fade-out {
+            from {
+                opacity: .35
+            }
+
+            to {
+                opacity: 0
+            }
+        }
+
+        @@keyframes fslightbox-fade-in-strong {
+            from {
+                opacity: .3
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @@keyframes fslightbox-fade-out-strong {
+            from {
+                opacity: 1
+            }
+
+            to {
+                opacity: 0
+            }
+        }
+
+        .fslightbox-cursor-grabbing {
+            cursor: grabbing
+        }
+
+        .fslightbox-full-dimension {
+            width: 100%;
+            height: 100%
+        }
+
+        .fslightbox-open {
+            overflow: hidden;
+            height: 100%
+        }
+
+        .fslightbox-flex-centered {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        .fslightbox-opacity-0 {
+            opacity: 0 !important
+        }
+
+        .fslightbox-opacity-1 {
+            opacity: 1 !important
+        }
+
+        .fslightbox-scrollbarfix {
+            padding-right: 17px
+        }
+
+        .fslightbox-transform-transition {
+            transition: transform .3s
+        }
+
+        .fslightbox-container {
+            font-family: Arial,sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(rgba(30,30,30,.9),#000 1810%);
+            touch-action: pinch-zoom;
+            z-index: 1000000000;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent
+        }
+
+            .fslightbox-container * {
+                box-sizing: border-box
+            }
+
+        .fslightbox-svg-path {
+            transition: fill .15s ease;
+            fill: #ddd
+        }
+
+        .fslightbox-nav {
+            height: 45px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .fslightbox-slide-number-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            font-size: 15px;
+            color: #d7d7d7;
+            z-index: 0;
+            max-width: 55px;
+            text-align: left
+        }
+
+            .fslightbox-slide-number-container .fslightbox-flex-centered {
+                height: 100%
+            }
+
+        .fslightbox-slash {
+            display: block;
+            margin: 0 5px;
+            width: 1px;
+            height: 12px;
+            transform: rotate(15deg);
+            background: #fff
+        }
+
+        .fslightbox-toolbar {
+            position: absolute;
+            z-index: 3;
+            right: 0;
+            top: 0;
+            height: 100%;
+            display: flex;
+            background: rgba(35,35,35,.65)
+        }
+
+        .fslightbox-toolbar-button {
+            height: 100%;
+            width: 45px;
+            cursor: pointer
+        }
+
+            .fslightbox-toolbar-button:hover .fslightbox-svg-path {
+                fill: #fff
+            }
+
+        .fslightbox-slide-btn-container {
+            display: flex;
+            align-items: center;
+            padding: 12px 12px 12px 6px;
+            position: absolute;
+            top: 50%;
+            cursor: pointer;
+            z-index: 3;
+            transform: translateY(-50%)
+        }
+
+        @@media (min-width:476px) {
+            .fslightbox-slide-btn-container {
+                padding: 22px 22px 22px 6px
+            }
+        }
+
+        @@media (min-width:768px) {
+            .fslightbox-slide-btn-container {
+                padding: 30px 30px 30px 6px
+            }
+        }
+
+        .fslightbox-slide-btn-container:hover .fslightbox-svg-path {
+            fill: #f1f1f1
+        }
+
+        .fslightbox-slide-btn {
+            padding: 9px;
+            font-size: 26px;
+            background: rgba(35,35,35,.65)
+        }
+
+        @@media (min-width:768px) {
+            .fslightbox-slide-btn {
+                padding: 10px
+            }
+        }
+
+        @@media (min-width:1600px) {
+            .fslightbox-slide-btn {
+                padding: 11px
+            }
+        }
+
+        .fslightbox-slide-btn-container-previous {
+            left: 0
+        }
+
+        @@media (max-width:475.99px) {
+            .fslightbox-slide-btn-container-previous {
+                padding-left: 3px
+            }
+        }
+
+        .fslightbox-slide-btn-container-next {
+            right: 0;
+            padding-left: 12px;
+            padding-right: 3px
+        }
+
+        @@media (min-width:476px) {
+            .fslightbox-slide-btn-container-next {
+                padding-left: 22px
+            }
+        }
+
+        @@media (min-width:768px) {
+            .fslightbox-slide-btn-container-next {
+                padding-left: 30px
+            }
+        }
+
+        @@media (min-width:476px) {
+            .fslightbox-slide-btn-container-next {
+                padding-right: 6px
+            }
+        }
+
+        .fslightbox-down-event-detector {
+            position: absolute;
+            z-index: 1
+        }
+
+        .fslightbox-slide-swiping-hoverer {
+            z-index: 4
+        }
+
+        .fslightbox-invalid-file-wrapper {
+            font-size: 22px;
+            color: #eaebeb;
+            margin: auto
+        }
+
+        .fslightbox-video {
+            object-fit: cover
+        }
+
+        .fslightbox-youtube-iframe {
+            border: 0
+        }
+
+        .fslightboxl {
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 67px;
+            height: 67px
+        }
+
+            .fslightboxl div {
+                box-sizing: border-box;
+                display: block;
+                position: absolute;
+                width: 54px;
+                height: 54px;
+                margin: 6px;
+                border: 5px solid;
+                border-color: #999 transparent transparent transparent;
+                border-radius: 50%;
+                animation: fslightboxl 1.2s cubic-bezier(.5,0,.5,1) infinite
+            }
+
+                .fslightboxl div:nth-child(1) {
+                    animation-delay: -.45s
+                }
+
+                .fslightboxl div:nth-child(2) {
+                    animation-delay: -.3s
+                }
+
+                .fslightboxl div:nth-child(3) {
+                    animation-delay: -.15s
+                }
+
+        @@keyframes fslightboxl {
+            0% {
+                transform: rotate(0)
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .fslightbox-source {
+            position: relative;
+            z-index: 2;
+            opacity: 0
+        }
+    </style>
+    <style>
+        @@-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        input.bito-email-input:-webkit-autofill,
+        input.bito-email-input:-webkit-autofill:hover,
+        input.bito-email-input:-webkit-autofill:focus {
+            -webkit-text-fill-color: rgb(255, 255, 255);
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        #bito-body::-webkit-scrollbar,
+        #emptyDiv-inner::-webkit-scrollbar,
+        #loginParentDiv-outer::-webkit-scrollbar {
+            width: 4px;
+            border-radius: 24px;
+            color: #7a8084;
+        }
+
+        #bito-body::-webkit-scrollbar-thumb,
+        #emptyDiv-inner::-webkit-scrollbar-thumb,
+        #loginParentDiv-outer::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+            #bito-body::-webkit-scrollbar-thumb:hover,
+            #emptyDiv-inner::-webkit-scrollbar-thumb:hover,
+            #loginParentDiv-outer::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        .login-network-error-container {
+            padding: 10px 16px 8px;
+            color: rgb(255 0 0);
+        }
+
+        #loader {
+            background-color: #00000085;
+            position: absolute;
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            height: 300px;
+            align-items: center;
+            justify-content: center;
+            display: grid;
+            z-index: 3002;
+            opacity: 9999;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            vertical-align: text-bottom;
+            border: 1.75px solid #fff;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: spinner-border .75s linear infinite;
+            margin-top: -30px
+        }
+
+        @@keyframes spinner-border {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+
+    <style>
+        :root {
+            --dark-bg: #111111;
+            --secondary-dark: #222222;
+            --accent-color: #b5cc9e;
+            --accent-color-1: #5e912a;
+            --accent-color-2: #95af7a;
+            --gray-color: #aaaaaa;
+            --font-1: 'Abhaya Libre', serif;
+            --font-2: 'Open Sans', sans-serif;
+        }
+
+        .bg-accent-color {
+            background-color: #719949;
+        }
+
+        .text-gray {
+            color: #2f2a2a !important;
+        }
+
+        .section {
+            padding: 1em 2em 6em 1em;
+            overflow: hidden;
+        }
+
+        .list-group .list-group-item.list-group-item-action:hover {
+            background-color: #496131;
+            color: white;
+        }
+    </style>
+
+    <style>
+        .btn-primary {
+            margin-top: 10px !important;
+            background-color: #719949 !important;
+            color: white !important;
+        }
+        label { 
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="~/ui/bootstrap.bundle.min.js"></script>
+    <script src="~/ui/jquery.min.js"></script>
+    <script src="~/ui/swiper-bundle.min.js"></script>
+    <script src="~/ui/script.js"></script>
+    <script src="~/ui/swiper-script.js"></script>
+    <script src="~/ui/submit-form.js"></script>
+    <script src="~/ui/isotope.pkgd.min.js"></script>
+
+    <!-- Header -->
+    <section class="bg-accent-color-1 py-3">
+        <div class="r-container">
+            <div class="d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center gap-3">
+                <ul class="d-flex m-0 flex-lg-row flex-column justify-content-center align-items-center gap-3 text-white font-2 text-center text-lg-start" style="list-style: none;">
+                    <li>Phone : +447852528020</li>
+                    <li>Email : info@chosenhealthcare.co.uk</li>
+                </ul>
+                <div class="social-container justify-content-center">
+                    <a href="https://www.facebook.com/" class="social-item">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="https://www.twitter.com/" class="social-item">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/" class="social-item">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="sticky-top bg-white">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <div class="logo-container">
+                            <img src="~/img/chosen-logo.png" alt="" class="img-fluid">
+                        </div>
+                    </a>
+                    <button class="navbar-toggler accent-color border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 font-2 fw-semibold gap-lg-3">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/About">About Us</a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Service
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-page="/Services/ClientCare">Client Care Overview</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Services/HourlyHomeCare">Hourly Home Care</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Services/DailyHomeCare">Daily Home Care</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Services/HospitalHomeCare">Hospital to Home Care</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Services/RespiteHomeCare">Respite Home Care</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Services/SpecializedCare">Specialized Care</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Caregivers">Caregivers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/News">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Contact">Contact Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="/Account/Login" asp-area="Identity">Login</a>
+                            </li>
+                        </ul>
+                        <a asp-page="/Data/Apply" type="button" class="btn button bg-accent-color" style="margin:3px;">
+                            Application
+                        </a>
+                        <a asp-page="/Data/BookAppointment" type="button" class="btn button bg-accent-color" style="margin:3px;">
+                            Book An
+                            Appointment
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <!-- End  of Header -->
+
+    <main>
+        @RenderBody()
+
+    </main>
+
+    <footer>
+        <section class="py-5 position-relative" style="background-image: url(../img/image-1920x900-2.jpg);">
+            <div class="r-container">
+                <div class="image-overlay-2"></div>
+                <div class="position-relative" style="z-index: 2;">
+                    <div class="row row-cols-1 row-cols-lg-2 text-lg-start text-center px-lg-0 px-3">
+                        <div class="col">
+                            <h4 class="text-white font-1 fw-bold fs-1">
+                                Give Your Loved Ones Quality Care You Can Trust
+                            </h4>
+                        </div>
+                        <div class="col">
+                            <div class="d-flex justify-content-lg-end justify-content-center h-100 align-items-center">
+                                <a asp-page="/Contact" type="button" class="btn btn-dark px-4 py-3 fs-5">Contact Us Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="px-lg-0 px-4 py-lg-5 py-4 bg-accent-color-1">
+            <div class="r-container text-white">
+                <div class="row row-cols-1 row-cols-lg-4">
+                    <div class="col col-lg-4 mb-3">
+                        <div class="d-flex flex-column h-100 justify-content-center">
+                           
+                            <p class="link-light">
+                                With Chosen Healthcare, you can trust that you're in capable hands. Our experienced team is committed to delivering top-notch care that prioritizes your comfort, dignity, and well-being. We aim to make your healthcare journey as smooth and stress-free as possible, ensuring that you feel supported every step of the way.
+                            </p>
+                            <img src="~/img/cqc.png"/>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2 mb-3">
+                        <div class="d-flex flex-column">
+                            <h5 class="font-1 fw-bold mb-3">Quick Link</h5>
+                            <div class="d-flex flex-column gap-2">
+                               
+                                <a class="d-flex flex-row gap-2 align-items-center link-light" asp-page="/Services/ClientCare"><i class="fa-solid fa-chevron-right accent-color"></i> Client Care Overview </a>
+                                <a class="d-flex flex-row gap-2 align-items-center link-light" asp-page="/Services/HourlyHomeCare"><i class="fa-solid fa-chevron-right accent-color"></i> Hourly Home Care</a>
+                                <a class="d-flex flex-row gap-2 align-items-center link-light" asp-page="/Services/DailyHomeCare"><i class="fa-solid fa-chevron-right accent-color"></i> Daily Home Care</a>
+                                <a class="d-flex flex-row gap-2 align-items-center link-light" asp-page="/Services/HospitalHomeCare"><i class="fa-solid fa-chevron-right accent-color"></i> Hospital to Home Care</a>
+                                <a class="d-flex flex-row gap-2 align-items-center link-light" asp-page="/Services/RespiteHomeCare"><i class="fa-solid fa-chevron-right accent-color"></i> Respite Home Care</a>
+                                <a class="d-flex flex-row gap-2 align-items-center link-light" asp-page="/Services/SpecializedCare"><i class="fa-solid fa-chevron-right accent-color"></i> Specialized Care</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-2 mb-3">
+                        <div class="d-flex flex-column">
+                            <h5 class="font-1 fw-bold mb-3">Information</h5>
+                            <div class="d-flex flex-column gap-2">
+                                <a asp-page="/About" class="d-flex flex-row gap-2 align-items-center link-light"><i class="fa-solid fa-chevron-right accent-color"></i> About Us</a> 
+                                <a asp-page="/PrivacyPolicy" class="d-flex flex-row gap-2 align-items-center link-light"><i class="fa-solid fa-chevron-right accent-color"></i> Privacy Policy</a>
+                                <a asp-page="/FAQs" class="d-flex flex-row gap-2 align-items-center link-light"><i class="fa-solid fa-chevron-right accent-color"></i> FAQ</a>
+                                <a asp-page="/Contact" class="d-flex flex-row gap-2 align-items-center link-light"><i class="fa-solid fa-chevron-right accent-color"></i> Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-lg-4 mb-3">
+                        <div class="d-flex flex-column mb-3">
+                            <h5 class="font-1 fw-bold mb-2">Get In Touch</h5> 
+                            <div class="d-flex flex-wrap">
+                                <div class="d-flex flex-row me-2 gap-2 align-items-center">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                   
+                                    38C The Wenta Enterprise Center,
+
+                                    Cranbourne Road,
+                                    Potters bar.
+                                    Hertfordshire
+                                    EN6 3DQ.
+                                     
+                                </div>
+                                <div class="d-flex flex-row me-2 gap-2 align-items-center">
+                                    <i class="fa-solid fa-phone"></i>
+                                    +447852528020
+                                </div>
+                                <div class="d-flex flex-row me-2 gap-2 align-items-center">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    info@chosenhealthcare.co.uk
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column mb-3">
+                            <h5 class="font-1 fw-bold mb-2">Social Media :</h5>
+                            <div class="social-container">
+                                <a href="https://www.facebook.com/" class="social-item">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="https://www.twitter.com/" class="social-item">
+                                    <i class="fa-brands fa-twitter"></i>
+                                </a>
+                                <a href="https://www.youtube.com/" class="social-item">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-100" style="border-bottom: 1px solid var(--accent-color-2);"></div>
+                <div class="text-center p-2">© Copyright 2024. All Rights Reserved. Chosen Healthcare</div>
+            </div>
+        </section>
+    </footer>
+
+    <script src="~/ui/fslightbox.js"></script>
+    <script src="~/ui/masonry.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
+

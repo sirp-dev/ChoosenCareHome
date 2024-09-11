@@ -1,0 +1,59 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.TimesheetDetailsModel
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Timesheet Details for @Model.UserProfile.FirstName @Model.UserProfile.Surname (@Model.MonthYearTitle) (@Model.UserTimeSheets.Count())</h3>
+        <p>
+            <a asp-page="./GenerateInvoice" asp-route-id="@Model.UserProfile.Id" asp-route-year="@Model.Year" asp-route-month="@Model.Month" class="btn btn-primary">Print Invoice</a>
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Break (minutes)</th>
+                        <th>Rate Per Hour</th>
+                        <th>Total Hours</th>
+                        <th>Address</th>
+                        <th>Post Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.UserTimeSheets != null && Model.UserTimeSheets.Count > 0)
+                    {
+                        int sn = 0;
+
+                        foreach (var item in Model.UserTimeSheets)
+                        {
+                            var totalHours = (item.EndTime - item.StartTime).TotalHours - (item.Break);
+                            <tr>
+                                <td>@(++sn)</td>
+                                <td>@item.TimeSheet.Date.ToString("ddd dd MMM, yyyy")</td>
+                                <td>@item.StartTime</td>
+                                <td>@item.EndTime</td>
+                                <td>@item.Break</td>
+                                <td>@item.RatePerHour.ToString("C")</td>
+                                <td>@totalHours.ToString("F2")</td>
+                                <td>@item.Address</td>
+                                <td>@item.PostCode</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="9" class="text-center">No timesheets found for this user.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

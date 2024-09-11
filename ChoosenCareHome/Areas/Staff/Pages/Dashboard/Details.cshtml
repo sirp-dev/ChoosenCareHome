@@ -1,0 +1,189 @@
+﻿@page
+@model ChoosenCareHome.Areas.Staff.Pages.Dashboard.DetailsModel
+@{
+}
+
+<div>
+    <h4>TIME SHEET DETAILS FOR @Model.UserTimeSheet.TimeSheet.Date.ToString("ddd dd MMM, yyyy").ToUpper()</h4>
+    @if (TempData["success"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>@TempData["success"]</strong>
+        </div>
+
+    }
+
+    @if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Accepted)
+    {
+        <button class="btn btn-success">
+            Acceptance Status:
+
+            <span>Accepted</span>
+        </button>
+    }
+    else if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Declined)
+    {
+        <button class="btn btn-danger">
+            Acceptance Status:
+
+            <span>Declined</span>
+            <span>
+                <br />  @Model.UserTimeSheet.AcceptedReason
+            </span>
+        </button>
+    }
+    else if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Canceled)
+    {
+        <button class="btn btn-danger">
+            Acceptance Status:
+
+            <span>Canceled</span>
+            <span>
+                <br /> @Model.UserTimeSheet.AcceptedReason
+            </span>
+        </button>
+    }
+    else if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Pending)
+    {
+        <button class="btn btn-info">
+            Acceptance Status:
+
+            <span>Pending</span>
+        </button>
+    }
+    @{
+        // Calculate remaining hours for each item
+        DateTime now = DateTime.UtcNow; // Get current time in UTC
+        TimeSpan remainingTime = Model.UserTimeSheet.AcceptanceExpirationTime - now;
+        int remainingHours = (int)Math.Ceiling(remainingTime.TotalHours); // Calculate remaining hours
+
+        // Ensure remaining hours is not negative
+        if (remainingHours < 0)
+        {
+            remainingHours = 0;
+        }
+        // Determine whether to display "hr" or "hrs"
+        string hoursLabel = remainingHours == 1 ? "hr" : "hrs";
+    }
+    <h5>
+        Make sure to accept or decline within the time frame.<br />
+        @Html.DisplayFor(modelItem => Model.UserTimeSheet.AcceptanceExpirationTime)  (@remainingHours@hoursLabel)
+    </h5>
+    @if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Accepted)
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>When I started my Sheet</th>
+                    <td>
+                        @if (Model.UserTimeSheet.UserSheetStartTime != null)
+                        {
+
+                            @Html.DisplayFor(model => model.UserTimeSheet.UserSheetStartTime.Value)
+                        }
+                        else
+                        {
+                            <span>--/--/-- --:--</span>
+
+                            <form method="post" asp-page-handler="Start">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="UserTimeSheet.Id" />
+
+                                <input type="submit" value="Mark Start Time" class="btn btn-success" />
+
+                            </form>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>When I close my Sheet</th>
+                    <td>
+                        @if (Model.UserTimeSheet.UserSheetEndTime != null)
+                        {
+
+                            @Html.DisplayFor(model => model.UserTimeSheet.UserSheetEndTime.Value)
+                        }
+                        else
+                        {
+                            <span>--/--/-- --:--</span>
+                            <form method="post" asp-page-handler="End">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input type="hidden" asp-for="UserTimeSheet.Id" />
+
+                                <input type="submit" value="Mark End Time" class="btn btn-success" />
+
+                            </form>
+                        }
+                    </td>
+                </tr>
+            </thead>
+        </table>
+
+
+    }
+    <dl class="row">
+
+
+
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.StartTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserTimeSheet.StartTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.EndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserTimeSheet.EndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.Report)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.UserTimeSheet.Report)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserTimeSheet.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.PostCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserTimeSheet.PostCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.RatePerHour)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserTimeSheet.RatePerHour)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserTimeSheet.Break)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserTimeSheet.Break)
+        </dd>
+
+    </dl>
+</div>
+<div>
+
+    @if (remainingHours > 0)
+    {
+        if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Pending)
+        {
+            <a asp-page="./AcceptanceStatus" asp-route-id="@Model.UserTimeSheet?.Id" class="btn btn-info">Accept/Declined</a>
+        }
+    }
+    @if (Model.UserTimeSheet.TimesheetAcceptance == ChoosenCareHome.Data.Model.Enum.TimesheetAcceptance.Accepted)
+    {
+    <a asp-page="./Update" asp-route-id="@Model.UserTimeSheet?.Id" class="btn btn-primary">Update</a>
+    }
+    <a asp-page="./TimeSheet" class="btn btn-warning">Back to Timesheet</a>
+</div>

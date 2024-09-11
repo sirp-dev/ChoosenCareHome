@@ -1,0 +1,332 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.TimeSheetPage.InvoiceModel
+@{
+}
+@{
+    //Layout = "/Pages/Shared/_Pdf_Layout.cshtml";
+    Layout = null;
+}
+
+<html>
+<head>
+    <title id="page-title-j" style="text-transform: uppercase;">
+        Invoice - Chosen Healthcare - we prioritize the well-being and comfort of our clients
+    </title>
+    <link rel="shortcut icon" href="~/img/chosen-logo.png" type="image/x-icon">
+    <link href="~/NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        // Function to handle download
+
+         function downloadFunction() {
+            setTimeout(() => {
+                const element = document.getElementById('body');
+                const formattedDate = '@Model.Fullname.ToUpper().Replace(" ", "_").Replace("'", "").Replace("/", "").Replace(".", "").Replace("-", "")';
+                const formattedDate2 = '@Model.Invoice.PeriodEnd.ToString("MMMMyyyy")';
+                const options = {
+                    margin: [10, 10, 10, 10], // Adjust margins if needed
+                    filename: 'Choosen_HC_Invoice_' + formattedDate2 +'_' + formattedDate + '.pdf',
+                    image: { type: 'jpeg', quality: 1.0 },
+                    html2canvas: { scale: 2, useCORS: true }, // Adjust scale if necessary, useCORS for images
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+                html2pdf().set(options).from(element).save();
+            }, 1500); // Delay to allow content to render
+        }
+
+        @*function downloadFunction() {
+            const element = document.getElementById('body');
+            const formattedDate = '@Model.Fullname.ToUpper().Replace(" ", "_").Replace("'", "").Replace("/", "").Replace(".", "").Replace("-", "")';
+            const formattedDate2 = '@Model.Invoice.PeriodEnd.ToString("MMMMyyyy")';
+            const options = {
+                margin: [10, 10, 10, 10], // Adjust margins if needed
+                filename: 'Choosen_HC_Invoice_' + formattedDate2 +'_' + formattedDate + '.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { scale: 1 }, // Adjust scale if necessary
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(options).from(element).save();
+        }*@
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button onclick="downloadFunction()" class="btn btn-primary" style="margin:20px;padding:10px;text-align:center;">Download as PDF</button>
+        <div id="body" class="avoid-break">
+            <style>
+                body {
+                    margin: 0;
+                    font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                    font-size: 1rem;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    color: #212529;
+                    text-align: left;
+                    background-color: #fff;
+                    word-break: break-all;
+                }
+                .card-header1 {
+                    background-color: #007D53 !important;
+                    color: white;
+                    text-align: center;
+                    vertical-align: middle;
+                }
+                .input-group-sm > .custom-select, .input-group-sm > .form-control:not(textarea) {
+                    height: auto;
+                }
+                .daiv {
+                    box-shadow: 0px 11px 35px 0px #c5b5b4;
+                    word-break: break-all;
+                }
+                .secdaiv {
+                    box-shadow: 0px 4px 5px 0px #c5b5b4;
+                    word-break: break-all;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                }
+                th, td {
+                    padding: 5px;
+                    border-bottom: 1px solid #ccc;
+                    text-align: left;
+                    vertical-align: top;
+                    page-break-inside: avoid; /* Prevent table rows from being split */
+                }
+                th {
+                    width: 30%;
+                }
+                @@media print {
+                    .avoid-break {
+                        page-break-inside: avoid;
+                    }
+                }
+                img {
+                    page-break-inside: avoid !important;
+                }
+                p {
+                    page-break-inside: avoid !important;
+                }
+                tr {
+                    page-break-inside: avoid !important;
+                }
+                .secdaiv {
+                    page-break-inside: avoid !important;
+                }
+                h5 {
+                    page-break-inside: avoid !important;
+                }
+                span {
+                    page-break-inside: avoid !important;
+                }
+                strong {
+                    page-break-inside: avoid !important;
+                }
+                .personel {
+                    page-break-inside: avoid !important;
+                }
+            </style>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header" style="margin:0 auto;text-align:center;">
+                            <img src="~/img/chosen-logo.png" style="margin:0 auto;text-align:center;max-height:80px;padding:10px;" />
+                        </div>
+                        <div class="card-header card-header1">
+                            <h4 class="card-title">INVOICE</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <table class="table-bordered" style="width:100%; border-collapse: collapse;margin-bottom:7px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th colspan="2" style="text-align:center;font-weight:900;background-color:#87eda6;color:black;">
+                                                                EMPLOYER
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th align="start" style="width:50%;">
+                                                                Name
+                                                            </th>
+                                                            <td align="start">
+                                                                Chosen Healthcare
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th align="start" style="width:50%;">
+                                                                Email
+                                                            </th>
+                                                            <td align="start">
+                                                                info@chosenhealthcare.co.uk
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <table class="table-bordered" style="width: 100%; border-collapse: collapse; margin-bottom: 7px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th colspan="4" style="text-align:center;font-weight:900;background-color:#87eda6;color:black;">
+                                                                    EMPLOYEE
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="start" style="width:20%;">
+                                                                    First Name
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.User.FirstName
+                                                                </td>
+                                                                <th align="start" style="width:20%;">
+                                                                    Middle Name
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.User.MiddleName
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="start" style="width:20%;">
+                                                                    Surname
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.User.Surname
+                                                                </td>
+                                                                <th align="start" style="width:20%;">
+                                                                    DOB
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.User.DOB
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="start" style="width:20%;">
+                                                                    Email
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.User.Email
+                                                                </td>
+                                                                <th align="start" style="width:20%;">
+                                                                    Tel No.
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.User.PhoneNumber
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="start" style="width:20%;">
+                                                                    Address
+                                                                </th>
+                                                                <td align="start" colspan="3" style="width:80%;">
+                                                                    @Model.Invoice.User.Address
+                                                                </td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="start" style="width:20%;">
+                                                                    N.I. Number
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.NINumber
+                                                                </td>
+                                                                <th align="start" style="width:20%;">
+                                                                    P45
+                                                                </th>
+                                                                <td align="start" style="width:30%;">
+                                                                    @Model.Invoice.P45
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            
+                                            </div>
+                                            
+                                            <div class="col-md-12">
+                                                <table class="table-bordered" style="width: 100%; border-collapse: collapse; margin-bottom: 7px;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th style="width:17%;">
+                                                                Rate
+                                                            </th>
+                                                            <th style="width:17%;">
+                                                                Hours
+                                                            </th>
+                                                            <th style="width:17%;">
+                                                                Payment
+                                                            </th>
+                                                            <th style="width:49%;">
+                                                                Deductions
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">
+                                                                @Model.Invoice.Rate
+                                                            </td>
+                                                            <td align="right">
+                                                                @Model.Invoice.TotalHours
+                                                            </td>
+                                                            <td align="right">
+                                                                @Model.Invoice.TotalPay
+                                                            </td>
+                                                            <td align="right">
+                                                                Income Tax:  @Model.Invoice.IncomeTax
+                                                                <br />
+                                                                National Insurance:  @Model.Invoice.NationalInsurance
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-8">
+                                                <table class="table-bordered" style="width: 100%; border-collapse: collapse; margin-bottom: 7px; font-weight: 900; background-color: #87eda6; color: black;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                TOTAL PAYMENT (£)
+                                                            </th>
+                                                            <th>
+                                                                @Model.Invoice.TotalPay
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                TOTAL DEDUCTION (£)
+                                                            </th>
+                                                            <th>
+                                                                @{ decimal dec = Model.Invoice.NationalInsurance + Model.Invoice.IncomeTax; }
+                                                                @dec
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                NET PAYMENT (£)
+                                                            </th>
+                                                            <th>
+                                                                @Model.Invoice.NetPay
+                                                            </th>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿@page
+@model ChoosenCareHome.Pages.DetailsModel
+@{
+}
+
+<section class="section position-relative" style="background-image: url(img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">@Model.NewsBlog.Title</h1>
+            <h4 style="color:white;">Caring with Compassion, Respect and Dignity</h4>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">News</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+        <div class="col col-lg-12">
+            <div class="row row-cols-1">
+                <div class="col mb-3">
+                    <div class="card border border-light-subtle">
+                        <img src="@Model.NewsBlog.Image" class="card-img-top" alt="...">
+                        <div class="card-body px-3 py-4">
+                            <h6 class="font-1 lh-1 fw-bold">
+                                @Model.NewsBlog.Title
+                            </h6>
+                            <p>Date <span class="btn btn-primary">@Model.NewsBlog.Date.ToString("ddd dd MMM, yyyy")</span></p>
+
+                            <div>
+                                @Html.Raw(Model.NewsBlog.Message)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>

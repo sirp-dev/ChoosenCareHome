@@ -1,0 +1,50 @@
+﻿@page
+@model ChoosenCareHome.Pages.NewsModel
+@{
+}
+<section class="section position-relative" style="background-image: url(img/bg123.jpg);">
+    <div class="r-container">
+        <div class="image-overlay"></div>
+        <div class="position-relative" style="z-index: 2;">
+            <h1 class="font-1 fw-bold text-white">News</h1>
+            <h4 style="color:white;">Caring with Compassion, Respect and Dignity</h4>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item fw-bold"><a asp-page="/Index">Home</a></li>
+                    <li class="breadcrumb-item fw-bold active" aria-current="page">News</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="r-container">
+        <div class="d-flex flex-lg-row flex-column-reverse gap-3">
+             @foreach(var img in Model.NewsBlog) { 
+            <div class="col col-lg-4">
+                <div class="row row-cols-1">
+                    <div class="col mb-3">
+                        <div class="card border border-light-subtle">
+                            <img src="@img.Image" class="card-img-top" alt="...">
+                            <div class="card-body px-3 py-4">
+                                <h6 class="font-1 lh-1 fw-bold">
+                                    @img.Title
+                                </h6>
+                                <p>Date <span class="btn btn-primary">@img.Date.ToString("ddd dd MMM, yyyy")</span></p>
+                                <a type="button" asp-page="./Details" asp-route-id="@img.Id" class="btn bg-accent-color py-3 px-4 text-white">
+                                    Read
+                                    More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+             }
+        </div>
+    </div>
+    
+</section>
+

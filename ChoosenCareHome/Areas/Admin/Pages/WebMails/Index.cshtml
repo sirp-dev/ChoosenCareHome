@@ -1,0 +1,72 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.WebMails.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    
+
+}
+<div class="container">
+    <div class="table-responsive">
+        <h1>Index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MailSystem[0].Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MailSystem[0].Email)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.MailSystem[0].Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MailSystem[0].Retries)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MailSystem[0].NotificationStatus)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MailSystem[0].NotificationType)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MailSystem)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Retries)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NotificationStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NotificationType)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.Id" target="_blank">Delete</a>
+                        <a asp-page="./Resend" asp-route-id="@item.Id" target="_blank">Resend</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

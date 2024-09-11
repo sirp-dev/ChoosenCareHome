@@ -1,0 +1,50 @@
+﻿@page
+@model ChoosenCareHome.Areas.Admin.Pages.HealthCareQualificationPage.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>HealthQualification</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HealthQualification.Id" />
+            <div class="form-group">
+                <label asp-for="HealthQualification.Name" class="control-label"></label>
+                <input asp-for="HealthQualification.Name" class="form-control" />
+                <span asp-validation-for="HealthQualification.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthQualification.Status" class="control-label"></label>
+                <input asp-for="HealthQualification.Status" class="form-control" />
+                <span asp-validation-for="HealthQualification.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthQualification.Date" class="control-label"></label>
+                <input asp-for="HealthQualification.Date" class="form-control" />
+                <span asp-validation-for="HealthQualification.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HealthQualification.ApplicationId" class="control-label"></label>
+                <select asp-for="HealthQualification.ApplicationId" class="form-control" asp-items="ViewBag.ApplicationId"></select>
+                <span asp-validation-for="HealthQualification.ApplicationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
