@@ -963,7 +963,7 @@ return new fq(!1,a,{yJ:c,OP:d})};
 gq=function(a){zb.call(this,a);this.name="TimerCancelledError"};
 hq=function(a){zb.call(this,a);this.name="TimerDisposedError"};
 dha=function(a){return cha?Array.from(cha.encode(a)):g.sg(a)};
-eha=function(a){var b=new Yp,c={"X-Goog-Api-Key":"AIzaSyDyT5W0Jh49F30Pqqtyfdf7pDLFKLJoAnw"};return new to(b,a,function(){return c})};
+eha=function(a){var b=new Yp,c={"X-Goog-Api-Key":""};return new to(b,a,function(){return c})};
 iq=function(a,b){if(a.TV)return a.TV;if(void 0===a.ov)return[];b=new Tn(b,"c");var c=dha(a.ov);b.done();return a.TV=c};
 fha=function(a,b,c){b=new Tn(c,b);a=g.tg(a,2);b.done();return a};
 jq=function(a,b,c){b.MI(a.code);null==c||c(a)};
@@ -5155,7 +5155,7 @@ AWa=function(a){UU.call(this,a);var b=this;this.events=new g.ZK(a);g.N(this,this
 BWa=function(a){UU.call(this,a);var b=this;kU(this.api,"getPlaybackRate",function(){return b.api.getPlaybackRate()});
 kU(this.api,"setPlaybackRate",function(c){"number"===typeof c&&b.api.setPlaybackRate(c)})};
 KV=function(a){function b(e){e="https://jnn-pa.googleapis.com"+e;return c?g.Kp(e,"$httpHeaders",d):e}
-var c=void 0===c?!1:c;this.ej=a;this.j={};var d={"X-Goog-Api-Key":"AIzaSyDyT5W0Jh49F30Pqqtyfdf7pDLFKLJoAnw","Content-Type":"application/json+protobuf"};this.j={method:"POST",format:"RAW",postBodyFormat:"JSPB",headers:c?{}:d};this.B=b("/$rpc/google.internal.waa.v1.Waa/Create");this.C=b("/$rpc/google.internal.waa.v1.Waa/GenerateIT")};
+var c=void 0===c?!1:c;this.ej=a;this.j={};var d={"X-Goog-Api-Key":"","Content-Type":"application/json+protobuf"};this.j={method:"POST",format:"RAW",postBodyFormat:"JSPB",headers:c?{}:d};this.B=b("/$rpc/google.internal.waa.v1.Waa/Create");this.C=b("/$rpc/google.internal.waa.v1.Waa/GenerateIT")};
 CWa=function(a,b){var c;if(b.iM)for(c=0;c<b.iM.length;c++)WO(a,1,b.iM[c]);VO(a,2,b.e5);WO(a,3,b.ys);TO(a,4,b.F_);TO(a,5,b.jda);WO(a,6,b.kda)};
 DWa=function(a){return{Vp:JO(a,1),xba:JO(a,2)}};
 g.EWa=function(a,b){XO(a,1,b.hs,gUa,1);VO(a,3,b.videoPlaybackUstreamerConfig);XO(a,6,b.XA,CWa,3)};
